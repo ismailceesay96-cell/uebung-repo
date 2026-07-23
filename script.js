@@ -44,6 +44,24 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
+  // Hero background crossfade
+  var heroBg = document.getElementById("heroBg");
+  if (heroBg) {
+    var slides = Array.prototype.slice.call(heroBg.querySelectorAll(".hero-slide"));
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (slides.length && !slides.some(function (s) { return s.classList.contains("active"); })) {
+      slides[0].classList.add("active");
+    }
+    if (slides.length > 1 && !reduce) {
+      var idx = 0;
+      setInterval(function () {
+        slides[idx].classList.remove("active");
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add("active");
+      }, 6000);
+    }
+  }
+
   // Current year
   var yr = document.getElementById("year");
   if (yr) yr.textContent = String(new Date().getFullYear());

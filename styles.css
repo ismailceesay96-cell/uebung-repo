@@ -25,8 +25,9 @@
   --radius: 4px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* Salon photography — AI-generated placeholders. Replace with real Freecut photos. */
-  --hero-photo: url("https://d8j0ntlcm91z4.cloudfront.net/user_3EIolu6bazaAELbZ25vpHVlWw3U/hf_20260723_102344_8d25f65c-961e-47f2-b4c5-e6659a72b4de.png");
+  /* Salon photography. Hero slides are local, optimized files. */
+  --hero-1: url("assets/img/hero-1.webp");
+  --hero-2: url("assets/img/hero-2.webp");
   --shop-photo-1: url("assets/img/salon-1.webp");
   --shop-photo-2: url("https://d8j0ntlcm91z4.cloudfront.net/user_3EIolu6bazaAELbZ25vpHVlWw3U/hf_20260723_102348_182286f5-652a-411b-82c3-0219b54b1118.png");
   --shop-photo-3: url("https://d8j0ntlcm91z4.cloudfront.net/user_3EIolu6bazaAELbZ25vpHVlWw3U/hf_20260723_102349_22981684-4323-4c44-8536-fc7847fb0aa7.png");
@@ -173,23 +174,35 @@ em { font-style: italic; }
 .hero {
   position: relative; overflow: hidden;
   background-color: var(--green-900);
-  /* Scrim keeps the headline side dark for contrast; the photo reveals on the right.
-     Replace the salon photo URL with a real photograph of the Freecut salon. */
-  background-image:
-    linear-gradient(108deg, rgba(18,36,27,.95) 0%, rgba(18,36,27,.80) 46%, rgba(20,38,27,.55) 100%),
-    radial-gradient(120% 90% at 85% -10%, rgba(46,90,68,.35) 0%, rgba(18,36,27,0) 60%),
-    var(--hero-photo, none);
-  background-size: cover, cover, cover;
-  background-position: center, center, center 30%;
-  background-repeat: no-repeat;
   color: var(--ivory);
   padding: clamp(64px, 11vh, 128px) 0 clamp(80px, 13vh, 150px);
 }
+/* Crossfading photographic background */
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-slide {
+  position: absolute; inset: 0;
+  background-image: var(--img); background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 1.8s var(--ease);
+  will-change: opacity, transform;
+}
+.hero-slide.active { opacity: 1; animation: kenburns 14s ease-out both; }
+@keyframes kenburns { from { transform: scale(1.03); } to { transform: scale(1.13); } }
+/* Scrim keeps the headline side dark for contrast while the photo shows through */
+.hero-scrim {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(101deg, rgba(18,36,27,.93) 0%, rgba(18,36,27,.70) 44%, rgba(18,36,27,.32) 100%),
+    linear-gradient(to top, rgba(18,36,27,.58) 0%, rgba(18,36,27,0) 42%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide { transition: none; }
+  .hero-slide.active { animation: none; }
+}
 .hero-grain {
-  position: absolute; inset: 0; pointer-events: none; opacity: .5; mix-blend-mode: overlay;
+  position: absolute; inset: 0; z-index: 2; pointer-events: none; opacity: .5; mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
 }
-.hero-inner { position: relative; z-index: 2; max-width: 860px; }
+.hero-inner { position: relative; z-index: 3; max-width: 860px; }
 
 .hero .eyebrow { color: var(--brass-lt); }
 .hero-title {
@@ -227,7 +240,7 @@ em { font-style: italic; }
 
 .hero-plate {
   position: absolute; right: max(28px, 6vw); top: 50%; transform: translateY(-50%);
-  z-index: 1; color: var(--brass-lt); text-align: center;
+  z-index: 2; color: var(--brass-lt); text-align: center;
 }
 .plate-frame {
   width: 230px; height: 360px; border: 1px solid rgba(198,161,91,.4);
