@@ -24,6 +24,12 @@
   --wrap: 1200px;
   --radius: 4px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Salon photography — AI-generated placeholders. Replace with real Freecut photos. */
+  --hero-photo: url("https://d8j0ntlcm91z4.cloudfront.net/user_3EIolu6bazaAELbZ25vpHVlWw3U/hf_20260723_102344_8d25f65c-961e-47f2-b4c5-e6659a72b4de.png");
+  --shop-photo-1: url("https://d8j0ntlcm91z4.cloudfront.net/user_3EIolu6bazaAELbZ25vpHVlWw3U/hf_20260723_102344_8d25f65c-961e-47f2-b4c5-e6659a72b4de.png");
+  --shop-photo-2: url("https://d8j0ntlcm91z4.cloudfront.net/user_3EIolu6bazaAELbZ25vpHVlWw3U/hf_20260723_102348_182286f5-652a-411b-82c3-0219b54b1118.png");
+  --shop-photo-3: url("https://d8j0ntlcm91z4.cloudfront.net/user_3EIolu6bazaAELbZ25vpHVlWw3U/hf_20260723_102349_22981684-4323-4c44-8536-fc7847fb0aa7.png");
 }
 
 /* ---------- reset ---------- */
@@ -166,8 +172,16 @@ em { font-style: italic; }
    ============================================================ */
 .hero {
   position: relative; overflow: hidden;
-  background:
-    radial-gradient(120% 90% at 85% -10%, var(--green-700) 0%, var(--green-800) 42%, var(--green-900) 100%);
+  background-color: var(--green-900);
+  /* Scrim keeps the headline side dark for contrast; the photo reveals on the right.
+     Replace the salon photo URL with a real photograph of the Freecut salon. */
+  background-image:
+    linear-gradient(108deg, rgba(18,36,27,.95) 0%, rgba(18,36,27,.80) 46%, rgba(20,38,27,.55) 100%),
+    radial-gradient(120% 90% at 85% -10%, rgba(46,90,68,.35) 0%, rgba(18,36,27,0) 60%),
+    var(--hero-photo, none);
+  background-size: cover, cover, cover;
+  background-position: center, center, center 30%;
+  background-repeat: no-repeat;
   color: var(--ivory);
   padding: clamp(64px, 11vh, 128px) 0 clamp(80px, 13vh, 150px);
 }
@@ -317,6 +331,42 @@ em { font-style: italic; }
 }
 .step h3 { font-family: var(--font-display); font-weight: 500; font-size: 1.55rem; margin: 0 0 .5rem; color: var(--ivory); }
 .step p { margin: 0; font-size: .95rem; color: rgba(244,239,228,.75); }
+
+/* ============================================================
+   DER LADEN (GALLERY)
+   ============================================================ */
+.shop { padding: clamp(72px, 12vh, 130px) 0; background: var(--cream); }
+.shop-gallery {
+  display: grid; grid-template-columns: 1.35fr 1fr;
+  grid-auto-rows: minmax(238px, 1fr); gap: 20px;
+}
+.shop-tile {
+  position: relative; margin: 0; border-radius: var(--radius); overflow: hidden;
+  background-color: var(--green-800);
+  background-image: var(--img); background-size: cover; background-position: center;
+  border: 1px solid var(--line);
+  transition: box-shadow .4s var(--ease), border-color .4s var(--ease);
+}
+.shop-tile--wide { grid-row: span 2; }
+.shop-tile::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(18,36,27,.88) 0%, rgba(18,36,27,.28) 42%, rgba(18,36,27,0) 68%);
+}
+.shop-tile:hover { border-color: var(--brass); box-shadow: 0 22px 48px -26px rgba(18,36,27,.65); }
+.shop-tile figcaption {
+  position: absolute; left: 0; bottom: 0; z-index: 2; padding: 24px 26px;
+  color: var(--ivory); font-family: var(--font-display); font-weight: 500;
+  font-size: 1.3rem; line-height: 1.22; max-width: 24ch;
+}
+.tile-kicker {
+  display: block; font-family: var(--font-ui); font-size: .68rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--brass-lt); margin-bottom: .55rem;
+}
+@media (max-width: 760px) {
+  .shop-gallery { grid-template-columns: 1fr; }
+  .shop-tile--wide { grid-row: auto; }
+  .shop-tile { aspect-ratio: 3 / 2; }
+}
 
 /* ============================================================
    TEAM
