@@ -311,21 +311,6 @@ em { font-style: italic; }
 }
 /* When a <video> replaces the slot it inherits the same framing */
 video.feature-img { width: 100%; height: 100%; object-fit: cover; }
-.feature-scrim {
-  position: absolute; inset: 0;
-  background:
-    linear-gradient(to top, rgba(18,36,27,.9) 0%, rgba(18,36,27,.2) 46%, rgba(18,36,27,.28) 100%),
-    linear-gradient(100deg, rgba(18,36,27,.55) 0%, rgba(18,36,27,0) 55%);
-}
-.feature-caption {
-  position: absolute; left: 0; bottom: 0; z-index: 2;
-  padding: clamp(28px, 5vw, 60px); max-width: 44ch; color: var(--ivory);
-}
-.feature-caption .section-eyebrow { color: var(--brass-lt); margin-bottom: .8rem; }
-.feature-line {
-  font-family: var(--font-display); font-weight: 500;
-  font-size: clamp(1.7rem, 3.6vw, 2.8rem); line-height: 1.08; margin: 0;
-}
 
 /* ============================================================
    SERVICES
