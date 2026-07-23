@@ -25,9 +25,8 @@
   --radius: 4px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-  /* Salon photography. Hero slides are local, optimized files. */
-  --hero-1: url("assets/img/hero-1.webp");
-  --hero-2: url("assets/img/hero-2.webp");
+  /* Salon photography. Local, optimized files. */
+  --barber: url("assets/img/hero-1.webp");        /* barber at work — feature band (video goes here later) */
   --shop-photo-1: url("assets/img/salon-1.webp");
   --shop-photo-2: url("assets/img/salon-2.webp");
   --shop-photo-3: url("assets/img/salon-3.webp");
@@ -182,16 +181,11 @@ em { font-style: italic; }
 .hero-slide {
   position: absolute; inset: 0;
   background-image: var(--img); background-size: cover; background-position: center;
-  transform-origin: 68% 74%; /* push-in heads toward the lower-right */
   opacity: 0; transition: opacity 2s var(--ease);
-  will-change: opacity, transform;
+  will-change: opacity;
 }
-.hero-slide.active { opacity: 1; animation: kenburns 16s ease-out both; }
-/* Slow cinematic camera glide diagonally into the frame, toward the lower right */
-@keyframes kenburns {
-  from { transform: scale(1.02) translate(0%, 0%); }
-  to   { transform: scale(1.17) translate(-3.2%, -3.2%); }
-}
+/* Images simply cross-fade — one shows, the next gently takes over. No camera motion. */
+.hero-slide.active { opacity: 1; }
 /* Scrim keeps the headline side dark for contrast while the photo shows through */
 .hero-scrim {
   position: absolute; inset: 0; z-index: 1;
@@ -303,6 +297,35 @@ em { font-style: italic; }
 }
 .stat-num em { font-size: 1.1rem; font-style: normal; color: var(--brass-dk); margin-left: 2px; }
 .stat-label { font-size: .82rem; letter-spacing: .06em; color: var(--ink-soft); text-transform: uppercase; }
+
+/* ============================================================
+   FEATURE — BARBIER IN AKTION (cinematic band; video-ready)
+   ============================================================ */
+.feature { background: var(--green-900); }
+.feature-media {
+  position: relative; width: 100%; height: clamp(360px, 62vh, 640px); overflow: hidden;
+}
+.feature-img {
+  position: absolute; inset: 0;
+  background-image: var(--img); background-size: cover; background-position: center 38%;
+}
+/* When a <video> replaces the slot it inherits the same framing */
+video.feature-img { width: 100%; height: 100%; object-fit: cover; }
+.feature-scrim {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to top, rgba(18,36,27,.9) 0%, rgba(18,36,27,.2) 46%, rgba(18,36,27,.28) 100%),
+    linear-gradient(100deg, rgba(18,36,27,.55) 0%, rgba(18,36,27,0) 55%);
+}
+.feature-caption {
+  position: absolute; left: 0; bottom: 0; z-index: 2;
+  padding: clamp(28px, 5vw, 60px); max-width: 44ch; color: var(--ivory);
+}
+.feature-caption .section-eyebrow { color: var(--brass-lt); margin-bottom: .8rem; }
+.feature-line {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(1.7rem, 3.6vw, 2.8rem); line-height: 1.08; margin: 0;
+}
 
 /* ============================================================
    SERVICES
