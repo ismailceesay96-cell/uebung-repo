@@ -58,7 +58,7 @@
         slides[idx].classList.remove("active");
         idx = (idx + 1) % slides.length;
         slides[idx].classList.add("active");
-      }, 2000);
+      }, 2600);
     }
   }
 
