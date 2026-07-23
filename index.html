@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freecut — Meisterhaftes Haarhandwerk & Barbier</title>
+  <meta name="description" content="Freecut ist der Salon für Menschen, die Präzision zu schätzen wissen. Meisterhafter Herren- und Damenschnitt, klassische Rasur und Bartpflege — Handwerk auf höchstem Niveau." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Freecut Startseite">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="9" r="4.2" /><circle cx="8" cy="23" r="4.2" />
+            <line x1="11.4" y1="11.4" x2="27" y2="24" /><line x1="11.4" y1="20.6" x2="27" y2="8" />
+          </svg>
+        </span>
+        <span class="brand-word">Freecut</span>
+      </a>
+
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#handwerk">Das Handwerk</a>
+        <a href="#meister">Meister</a>
+        <a href="#besuch">Besuch</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="phone" href="tel:+4930123456">030 123 456</a>
+        <a class="btn btn-solid" href="#besuch">Termin buchen</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#handwerk">Das Handwerk</a>
+      <a href="#meister">Meister</a>
+      <a href="#besuch">Besuch</a>
+      <a class="btn btn-solid" href="#besuch">Termin buchen</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero-grain" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow reveal">Salon &amp; Barbier · seit 2009 · Berlin-Mitte</p>
+
+        <h1 class="hero-title">
+          <span class="reveal" style="--d:1">Der Schnitt</span>
+          <span class="reveal" style="--d:2">ist ein <em>Handwerk.</em></span>
+        </h1>
+
+        <p class="hero-lead reveal" style="--d:3">
+          Bei Freecut nimmt sich ein Meister Zeit für genau einen Menschen — Ihren.
+          Präzision, ein ruhiger Stuhl und über fünfzehn Jahre Erfahrung in jeder Bewegung.
+        </p>
+
+        <div class="hero-cta reveal" style="--d:4">
+          <a class="btn btn-solid btn-lg" href="#besuch">Termin sichern</a>
+          <a class="btn btn-ghost btn-lg" href="#leistungen">Leistungen &amp; Preise</a>
+        </div>
+
+        <div class="hero-status reveal" style="--d:5">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span><strong>Heute geöffnet</strong> bis 19:00 Uhr · Di–Sa</span>
+        </div>
+      </div>
+
+      <div class="hero-plate" aria-hidden="true">
+        <div class="plate-frame">
+          <svg viewBox="0 0 200 320" class="plate-art" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+            <!-- Straight razor -->
+            <path d="M40 210 C70 180 120 130 150 95 C158 86 156 74 145 74 C110 74 60 150 40 195 Z" />
+            <path d="M40 210 l-14 18 c-4 5 2 12 8 9 l14 -9" />
+            <line x1="150" y1="95" x2="166" y2="82" />
+            <circle cx="171" cy="78" r="4" />
+            <!-- comb -->
+            <path d="M52 250 h96 v12 h-96 z" />
+            <path d="M60 250 v-16 M72 250 v-16 M84 250 v-16 M96 250 v-16 M108 250 v-16 M120 250 v-16 M132 250 v-16 M140 250 v-16" />
+          </svg>
+        </div>
+        <span class="plate-caption">Werkzeug Nr. 01 — Das Rasiermesser</span>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE / VALUES ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Präzision</span><span class="dot">✦</span>
+        <span>Klassische Rasur</span><span class="dot">✦</span>
+        <span>Meisterhandwerk</span><span class="dot">✦</span>
+        <span>Beratung ohne Eile</span><span class="dot">✦</span>
+        <span>Präzision</span><span class="dot">✦</span>
+        <span>Klassische Rasur</span><span class="dot">✦</span>
+        <span>Meisterhandwerk</span><span class="dot">✦</span>
+        <span>Beratung ohne Eile</span><span class="dot">✦</span>
+      </div>
+    </div>
+
+    <!-- ============ INTRO / STATS ============ -->
+    <section class="intro">
+      <div class="wrap intro-grid">
+        <div class="intro-text reveal">
+          <p class="section-eyebrow">Willkommen bei Freecut</p>
+          <h2 class="section-title">Ein Salon, der sich anfühlt&nbsp;wie&nbsp;ein&nbsp;Ritual.</h2>
+          <p class="prose">
+            Wir glauben nicht an Fließband und Stoppuhr. Ein guter Schnitt beginnt mit einem Gespräch,
+            einer warmen Wäsche und der vollen Aufmerksamkeit eines Handwerkers, der sein Fach seit
+            Jahren lebt. Was Sie mitnehmen, ist mehr als eine Frisur — es ist Haltung.
+          </p>
+        </div>
+        <ul class="stats reveal" style="--d:2">
+          <li><span class="stat-num">15</span><span class="stat-label">Jahre am Stuhl</span></li>
+          <li><span class="stat-num">4</span><span class="stat-label">Meister im Team</span></li>
+          <li><span class="stat-num">60<em>min</em></span><span class="stat-label">Zeit pro Termin</span></li>
+          <li><span class="stat-num">4,9<em>★</em></span><span class="stat-label">aus 480 Bewertungen</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ LEISTUNGEN ============ -->
+    <section class="services" id="leistungen">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">Leistungen &amp; Preise</p>
+          <h2 class="section-title">Was am Stuhl passiert.</h2>
+          <p class="prose section-sub">Jede Leistung schließt Beratung, Wäsche und Styling ein. Ohne Aufschlag, ohne Eile.</p>
+        </header>
+
+        <div class="service-list">
+          <article class="service-row reveal">
+            <div class="service-main">
+              <h3>Herrenschnitt Signature</h3>
+              <p>Waschen, Schnitt und Finish nach Maß — abgestimmt auf Haar, Wuchs und Gesicht.</p>
+            </div>
+            <div class="service-meta"><span class="dur">60 Min.</span><span class="price">55&nbsp;€</span></div>
+          </article>
+
+          <article class="service-row reveal">
+            <div class="service-main">
+              <h3>Klassische Rasur</h3>
+              <p>Heißes Tuch, Messer, Kompresse. Das volle Barbier-Ritual für gepflegte Konturen.</p>
+            </div>
+            <div class="service-meta"><span class="dur">45 Min.</span><span class="price">45&nbsp;€</span></div>
+          </article>
+
+          <article class="service-row reveal">
+            <div class="service-main">
+              <h3>Bart &amp; Kontur</h3>
+              <p>Formen, Kürzen und Pflegen des Bartes mit Öl und heißem Handtuch.</p>
+            </div>
+            <div class="service-meta"><span class="dur">30 Min.</span><span class="price">35&nbsp;€</span></div>
+          </article>
+
+          <article class="service-row reveal">
+            <div class="service-main">
+              <h3>Damenschnitt &amp; Styling</h3>
+              <p>Individueller Schnitt mit Beratung zu Form, Fall und Alltagstauglichkeit.</p>
+            </div>
+            <div class="service-meta"><span class="dur">75 Min.</span><span class="price">ab&nbsp;75&nbsp;€</span></div>
+          </article>
+
+          <article class="service-row reveal">
+            <div class="service-main">
+              <h3>Coloration &amp; Nuancen</h3>
+              <p>Von dezenten Grautönen bis zur vollen Farbe — schonend und langlebig gearbeitet.</p>
+            </div>
+            <div class="service-meta"><span class="dur">120 Min.</span><span class="price">ab&nbsp;95&nbsp;€</span></div>
+          </article>
+
+          <article class="service-row reveal">
+            <div class="service-main">
+              <h3>Vater &amp; Sohn</h3>
+              <p>Zwei Schnitte, ein Termin. Das Handwerk weitergeben — bei einer Tasse Kaffee.</p>
+            </div>
+            <div class="service-meta"><span class="dur">90 Min.</span><span class="price">85&nbsp;€</span></div>
+          </article>
+        </div>
+
+        <p class="services-note reveal">Alle Preise inkl. MwSt. · Barzahlung &amp; Karte · Trinkgeld nach Ihrem Ermessen</p>
+      </div>
+    </section>
+
+    <!-- ============ DAS HANDWERK (PROCESS) ============ -->
+    <section class="craft" id="handwerk">
+      <div class="wrap">
+        <header class="section-head section-head--light reveal">
+          <p class="section-eyebrow">Das Handwerk</p>
+          <h2 class="section-title">Vier Schritte, kein Schritt zu viel.</h2>
+        </header>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-num">01</span>
+            <h3>Beratung</h3>
+            <p>Wir hören zu, bevor die Schere kommt. Haarstruktur, Alltag und Wunsch — alles zählt.</p>
+          </li>
+          <li class="step reveal" style="--d:2">
+            <span class="step-num">02</span>
+            <h3>Wäsche</h3>
+            <p>Warmes Wasser, hochwertige Pflege und ein Moment zum Ankommen. Der Kopf wird frei.</p>
+          </li>
+          <li class="step reveal" style="--d:3">
+            <span class="step-num">03</span>
+            <h3>Schnitt</h3>
+            <p>Von Hand geführt, mit Schere und Messer. Präzise, ruhig und ohne Blick auf die Uhr.</p>
+          </li>
+          <li class="step reveal" style="--d:4">
+            <span class="step-num">04</span>
+            <h3>Finish</h3>
+            <p>Styling, Empfehlung für zu Hause und der letzte prüfende Blick im Spiegel.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ MEISTER / TEAM ============ -->
+    <section class="team" id="meister">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="section-eyebrow">Die Meister</p>
+          <h2 class="section-title">Hände, denen man vertraut.</h2>
+        </header>
+
+        <div class="team-grid">
+          <article class="master reveal">
+            <div class="master-portrait" data-initials="MK" aria-hidden="true"></div>
+            <h3>Marek Kessler</h3>
+            <p class="master-role">Inhaber · Meister</p>
+            <p class="master-bio">Gelernt in Hamburg, verfeinert in London. Marek steht für den klassischen Herrenschnitt und die perfekte Rasur.</p>
+          </article>
+          <article class="master reveal" style="--d:2">
+            <div class="master-portrait" data-initials="LB" aria-hidden="true"></div>
+            <h3>Lena Brandt</h3>
+            <p class="master-role">Meisterin · Coloration</p>
+            <p class="master-bio">Ihr Blick für Farbe und Fall macht sie zur ersten Adresse für Damenschnitt und feine Nuancen.</p>
+          </article>
+          <article class="master reveal" style="--d:3">
+            <div class="master-portrait" data-initials="TA" aria-hidden="true"></div>
+            <h3>Tarek Amin</h3>
+            <p class="master-role">Barbier</p>
+            <p class="master-bio">Spezialist für Bart und Kontur. Ruhige Hand, heißes Tuch, ein Ergebnis wie mit dem Lineal gezogen.</p>
+          </article>
+          <article class="master reveal" style="--d:4">
+            <div class="master-portrait" data-initials="SV" aria-hidden="true"></div>
+            <h3>Sophie Vogt</h3>
+            <p class="master-role">Stylistin</p>
+            <p class="master-bio">Moderne Schnitte mit Sinn für Alltagstauglichkeit. Sophie berät ehrlich und mit Gespür.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ZITAT ============ -->
+    <section class="quote">
+      <div class="wrap quote-inner reveal">
+        <p class="quote-text">„Ich gehe seit Jahren nirgendwo sonst hin. Man merkt in jeder Minute, dass hier jemand sein Handwerk wirklich beherrscht.“</p>
+        <p class="quote-author">— Andreas H., Stammgast seit 2016</p>
+      </div>
+    </section>
+
+    <!-- ============ BESUCH / KONTAKT ============ -->
+    <section class="visit" id="besuch">
+      <div class="wrap visit-grid">
+        <div class="visit-info reveal">
+          <p class="section-eyebrow">Ihr Besuch</p>
+          <h2 class="section-title">Reservieren Sie Ihren&nbsp;Stuhl.</h2>
+          <p class="prose">Termine vergeben wir persönlich — telefonisch oder direkt online. So bekommt jeder Gast genau die Zeit, die sein Schnitt verdient.</p>
+
+          <div class="visit-cta">
+            <a class="btn btn-solid btn-lg" href="tel:+4930123456">030 123 456 anrufen</a>
+            <a class="btn btn-ghost btn-lg" href="mailto:termin@freecut.de">termin@freecut.de</a>
+          </div>
+
+          <dl class="visit-details">
+            <div><dt>Adresse</dt><dd>Musterstraße 12<br />10117 Berlin-Mitte</dd></div>
+            <div><dt>Öffnungszeiten</dt><dd>Di–Fr 09:00–19:00<br />Sa 09:00–16:00<br />So &amp; Mo geschlossen</dd></div>
+          </dl>
+        </div>
+
+        <aside class="hours-card reveal" style="--d:2" aria-label="Öffnungszeiten im Überblick">
+          <p class="hours-title">Diese Woche</p>
+          <ul class="hours-list">
+            <li><span>Montag</span><span class="closed">Geschlossen</span></li>
+            <li class="is-today"><span>Dienstag</span><span>09:00 – 19:00</span></li>
+            <li><span>Mittwoch</span><span>09:00 – 19:00</span></li>
+            <li><span>Donnerstag</span><span>09:00 – 19:00</span></li>
+            <li><span>Freitag</span><span>09:00 – 19:00</span></li>
+            <li><span>Samstag</span><span>09:00 – 16:00</span></li>
+            <li><span>Sonntag</span><span class="closed">Geschlossen</span></li>
+          </ul>
+          <a class="btn btn-solid btn-block" href="tel:+4930123456">Jetzt Termin sichern</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <span class="brand-word">Freecut</span>
+        <p>Meisterhaftes Haarhandwerk<br />&amp; klassischer Barbier.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#handwerk">Das Handwerk</a>
+        <a href="#meister">Meister</a>
+        <a href="#besuch">Besuch</a>
+      </nav>
+      <div class="footer-contact">
+        <p>Musterstraße 12 · 10117 Berlin</p>
+        <p><a href="tel:+4930123456">030 123 456</a> · <a href="mailto:termin@freecut.de">termin@freecut.de</a></p>
+      </div>
+    </div>
+    <div class="wrap footer-base">
+      <p>© <span id="year">2026</span> Freecut. Alle Rechte vorbehalten.</p>
+      <p><a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
