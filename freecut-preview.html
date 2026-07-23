@@ -187,7 +187,7 @@ em { font-style: italic; }
 .hero-slide {
   position: absolute; inset: 0;
   background-image: var(--img); background-size: cover; background-position: center;
-  opacity: 0; transition: opacity 2s var(--ease);
+  opacity: 0; transition: opacity 1s var(--ease);
   will-change: opacity;
 }
 /* Images simply cross-fade — one shows, the next gently takes over. No camera motion. */
@@ -581,7 +581,6 @@ video.feature-img { width: 100%; height: 100%; object-fit: cover; }
     <section class="hero" id="top">
       <div class="hero-bg" id="heroBg" aria-hidden="true">
         <div class="hero-slide active" style="--img: var(--shop-photo-1)"></div>
-        <div class="hero-slide" style="--img: var(--shop-photo-2)"></div>
         <div class="hero-slide" style="--img: var(--shop-photo-3)"></div>
       </div>
       <div class="hero-scrim" aria-hidden="true"></div>
@@ -965,7 +964,7 @@ video.feature-img { width: 100%; height: 100%; object-fit: cover; }
         slides[idx].classList.remove("active");
         idx = (idx + 1) % slides.length;
         slides[idx].classList.add("active");
-      }, 7000);
+      }, 2000);
     }
   }
 
