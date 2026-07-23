@@ -462,6 +462,20 @@ video.feature-img { width: 100%; height: 100%; object-fit: cover; }
 .hours-card .btn-solid:hover { background: var(--brass-lt); }
 
 /* ============================================================
+   STANDORT / KARTE
+   ============================================================ */
+.location { padding: clamp(64px, 10vh, 110px) 0 0; background: var(--cream); }
+.location-head { max-width: 640px; margin-bottom: clamp(32px, 5vh, 52px); }
+.location-map {
+  position: relative; width: 100%; height: clamp(340px, 52vh, 520px);
+  background: var(--green-800); border-top: 1px solid var(--line);
+}
+.location-map iframe {
+  width: 100%; height: 100%; border: 0; display: block;
+  filter: grayscale(.15) contrast(1.02);
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .site-footer { background: var(--green-900); color: var(--ivory); padding: clamp(56px, 8vh, 80px) 0 30px; }
@@ -854,6 +868,21 @@ video.feature-img { width: 100%; height: 100%; object-fit: cover; }
           </ul>
           <a class="btn btn-solid btn-block" href="tel:+4930123456">Jetzt Termin sichern</a>
         </aside>
+      </div>
+    </section>
+
+    <!-- ============ STANDORT / KARTE ============ -->
+    <section class="location" id="standort" aria-label="Standort">
+      <div class="wrap location-head reveal">
+        <p class="section-eyebrow">Standort</p>
+        <h2 class="section-title">So finden Sie uns.</h2>
+        <p class="prose">Musterstraße 12 · 10117 Berlin-Mitte — mitten in der Stadt, wenige Schritte von der U-Bahn.</p>
+      </div>
+      <div class="location-map reveal">
+        <!-- Bei echter Adresse einfach den q-Parameter in der URL ersetzen. -->
+        <iframe title="Karte — Freecut Standort"
+          src="https://maps.google.com/maps?q=Musterstra%C3%9Fe%2012%2C%2010117%20Berlin&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
   </main>
