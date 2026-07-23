@@ -1,0 +1,83 @@
+<!-- ===================================================================
+     FREECUT — Referenz-Einbettung für deine Prime-Page
+     Klick auf die Karte öffnet die Website in einem internen Browser-Fenster.
+     -> Ersetze DEINE_FREECUT_URL (2x) durch deine öffentliche URL
+        (z. B. https://ismailceesay96-cell.github.io/uebung-repo/)
+     -> Diesen Block in einen "HTML/Embed"-Baustein deiner Prime-Page einfügen.
+     =================================================================== -->
+
+<div class="fcref-card" role="button" tabindex="0"
+     onclick="fcrefOpen()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();fcrefOpen()}">
+  <div class="fcref-card__label">Beispielreferenz · Web-Design</div>
+  <div class="fcref-card__title">Freecut — Salon &amp; Barbier <span class="fcref-badge">Beispielreferenz</span></div>
+  <div class="fcref-card__note">Beispiel-Referenz – kein aktives Kundenprojekt.</div>
+  <div class="fcref-card__cta">Im internen Browser ansehen&nbsp;→</div>
+</div>
+
+<div class="fcref-modal" id="fcrefModal" onclick="if(event.target===this)fcrefClose()">
+  <div class="fcref-window">
+    <div class="fcref-bar">
+      <span class="fcref-dot"></span><span class="fcref-dot"></span><span class="fcref-dot"></span>
+      <div class="fcref-address">freecut-salon.de · Beispielreferenz</div>
+      <button class="fcref-close" onclick="fcrefClose()" aria-label="Schließen">✕</button>
+    </div>
+    <iframe class="fcref-frame" id="fcrefFrame" title="Freecut Website"
+            loading="lazy" referrerpolicy="no-referrer"></iframe>
+  </div>
+</div>
+
+<style>
+  .fcref-card{
+    display:flex;flex-direction:column;gap:.4rem;max-width:420px;cursor:pointer;
+    padding:22px 24px;border:1px solid #ded6c4;border-radius:6px;background:#fbf8f1;
+    font-family:"Helvetica Neue",Arial,sans-serif;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+  }
+  .fcref-card:hover{transform:translateY(-2px);box-shadow:0 18px 40px -22px rgba(18,36,27,.55);border-color:#1c3a2c;}
+  .fcref-card:focus-visible{outline:2px solid #c6a15b;outline-offset:3px;}
+  .fcref-card__label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#a17e3c;}
+  .fcref-card__title{font-size:1.35rem;color:#1a1d19;font-weight:600;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .fcref-badge{
+    font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:#1c3a2c;background:#e3c888;border-radius:999px;padding:4px 10px;white-space:nowrap;
+  }
+  .fcref-card__note{font-size:.8rem;color:#6b7a6e;font-style:italic;}
+  .fcref-card__cta{font-size:.9rem;color:#1c3a2c;}
+
+  .fcref-modal{
+    position:fixed;inset:0;z-index:9999;display:none;place-items:center;
+    background:rgba(18,36,27,.72);backdrop-filter:blur(4px);padding:clamp(12px,3vw,40px);
+  }
+  .fcref-modal.fcref-open{display:grid;}
+  .fcref-window{
+    width:min(1200px,100%);height:min(80vh,860px);display:flex;flex-direction:column;
+    border-radius:10px;overflow:hidden;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);background:#fff;
+  }
+  .fcref-bar{
+    display:flex;align-items:center;gap:8px;padding:10px 14px;background:#12241b;flex:0 0 auto;
+  }
+  .fcref-dot{width:11px;height:11px;border-radius:50%;background:#3a5647;}
+  .fcref-address{
+    flex:1;margin:0 8px;padding:5px 14px;border-radius:999px;background:#1c3a2c;color:#e3c888;
+    font:500 .8rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.02em;text-align:center;
+  }
+  .fcref-close{
+    width:30px;height:30px;border:none;border-radius:6px;cursor:pointer;background:transparent;
+    color:#f4efe4;font-size:1rem;line-height:1;transition:background .2s ease;
+  }
+  .fcref-close:hover{background:rgba(244,239,228,.15);}
+  .fcref-frame{flex:1;width:100%;border:none;background:#12241b;}
+</style>
+
+<script>
+  function fcrefOpen(){
+    var f=document.getElementById('fcrefFrame');
+    if(!f.src) f.src='DEINE_FREECUT_URL';        /* <-- deine öffentliche URL */
+    document.getElementById('fcrefModal').classList.add('fcref-open');
+    document.body.style.overflow='hidden';
+  }
+  function fcrefClose(){
+    document.getElementById('fcrefModal').classList.remove('fcref-open');
+    document.body.style.overflow='';
+  }
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')fcrefClose();});
+</script>
