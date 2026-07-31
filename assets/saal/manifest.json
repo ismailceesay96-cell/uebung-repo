@@ -3,8 +3,9 @@
   "basePath": "assets/img/",
   "frames": [
     "venue-panorama.jpg",
-    "venue-tische.jpg",
     "venue-ballsaal.jpg",
-    "venue-buffet.jpg"
+    "venue-tische.jpg",
+    "venue-catering.jpg",
+    "venue-torte.jpg"
   ]
 }
