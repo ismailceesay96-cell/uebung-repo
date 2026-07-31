@@ -176,6 +176,18 @@ a{ color:inherit; text-decoration:none; }
     var(--noir);
   overflow:hidden;
 }
+.hero__bg{ position:absolute; inset:0; overflow:hidden; }
+.hero__bg img{
+  width:100%; height:100%; object-fit:cover;
+  filter:brightness(.5) saturate(.85) contrast(1.02);
+  transform:scale(1.05);
+}
+.hero__bg::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(10,9,8,.72), rgba(10,9,8,.55) 40%, rgba(10,9,8,.9)),
+    radial-gradient(70% 55% at 50% 42%, rgba(201,162,75,.14), transparent 70%);
+}
 .hero__glow{
   position:absolute; width:70vmax; height:70vmax; top:-22vmax; left:50%;
   transform:translateX(-50%);
@@ -283,6 +295,12 @@ a{ color:inherit; text-decoration:none; }
 }
 .gtile:hover img{ transform:scale(1.06); filter:saturate(1.05) brightness(1.02); }
 .gtile:hover::after{ box-shadow:inset 0 0 0 1px rgba(232,199,122,.55); }
+/* verschiedene Bildausschnitte desselben Fotos */
+.gtile img.pos-top{ object-position:50% 12%; }
+.gtile img.pos-bottom{ object-position:50% 88%; }
+.gtile img.pos-detail{ object-position:50% 62%; transform:scale(1.35); }
+.gtile img.pos-detail{ transition:transform .8s cubic-bezier(.2,.7,.2,1); }
+.gtile:hover img.pos-detail{ transform:scale(1.45); }
 
 /* ============================================================
    RUNDGANG (Scroll-Video)

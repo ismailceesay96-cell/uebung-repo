@@ -37,37 +37,43 @@ python3 -m http.server 8000
 # → http://localhost:8000
 ```
 
-## Eigene Bilder einsetzen
+## Bilder
 
-### Galerie
-Ersetze die Dateien in `assets/img/gallery-01.svg … gallery-12.svg` durch
-eigene Fotos (gleiche Namen), **oder** passe die `<img src="…">` in
-`index.html` (Abschnitt „GALERIE") an. Empfohlen: `.webp`/`.jpg`, ~1200px breit.
+Aktuell sind **4 echte Fotos der Location** eingebunden (`assets/img/venue-*.jpg`).
+Sie werden im Hero, in der Galerie **und** im Saal-Rundgang verwendet.
+
+> Tipp: Für scharfe Vollbild-Darstellung im Rundgang am besten Fotos mit
+> **mind. ~1600px Breite** liefern. Drei der aktuellen Fotos sind klein
+> (452–588px) und wirken im Vollbild etwas weich.
+
+### Galerie / Hero
+Ersetze die Dateien in `assets/img/` (gleiche Namen), **oder** passe die
+`<img src="…">` in `index.html` an. Empfohlen: `.webp`/`.jpg`, ~1600px breit.
 
 ### Saal-Rundgang (das Scroll-Video)
-Der Rundgang spielt eine **Bild-Sequenz** ab — je mehr Bilder, desto flüssiger.
+Der Player wählt automatisch den Modus – gesteuert über `assets/saal/manifest.json`:
 
-1. Lege deine Frames in `assets/saal/` (z. B. `frame_001.jpg … frame_060.jpg`).
-   Reihenfolge = Laufrichtung durch den Saal.
-2. Trage sie in `assets/saal/manifest.json` ein:
+- **< 20 Bilder → Cinema-Modus:** sanfter Cross-Fade mit Zoom (Ken Burns).
+  So entsteht schon aus wenigen Fotos ein cinematischer Rundgang (aktueller Stand).
+- **≥ 20 Bilder → Frame-Modus:** wie ein echtes Video, das man mit dem
+  Scrollen abspielt – man „läuft" flüssig durch den Saal.
 
-   ```json
-   {
-     "basePath": "assets/saal/",
-     "frames": ["frame_001.jpg", "frame_002.jpg", "frame_003.jpg"]
-   }
-   ```
-
-**Woher kommen die Frames?** Aus einem kurzen Handy-Video, das durch den Saal
-läuft — z. B. mit `ffmpeg` in Einzelbilder zerlegen:
+Für den echten Video-Walk ein kurzes Handy-Video (durch den Saal laufend) in
+Einzelbilder zerlegen und ins Manifest eintragen:
 
 ```bash
 ffmpeg -i rundgang.mp4 -vf "fps=15,scale=1600:-1" assets/saal/frame_%03d.jpg
 ```
 
-Fehlt das Manifest oder sind keine Bilder vorhanden, rendert ein
-**prozeduraler Fallback** denselben Rundgang-Effekt automatisch — die Sektion
-bleibt also nie leer.
+```json
+{
+  "basePath": "assets/saal/",
+  "frames": ["frame_001.jpg", "frame_002.jpg", "frame_003.jpg", "…"]
+}
+```
+
+Fehlt das Manifest oder laden keine Bilder, rendert ein **prozeduraler
+Fallback** denselben Effekt automatisch — die Sektion bleibt nie leer.
 
 Die „Länge" der Animation steuerst du über die Scroll-Höhe:
 `.rundgang__spacer { height: 340vh; }` in `css/styles.css`.
