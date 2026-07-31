@@ -39,6 +39,11 @@
 
   /* ---- Manifest + Bilder laden ---- */
   function loadManifest() {
+    // Inline-Frames (z. B. für eine self-contained Vorschau) haben Vorrang.
+    if (window.__SAAL_FRAMES__ && window.__SAAL_FRAMES__.length) {
+      preload(window.__SAAL_FRAMES__);
+      return;
+    }
     fetch('assets/saal/manifest.json')
       .then(function (res) { return res.ok ? res.json() : Promise.reject(); })
       .then(function (data) {
