@@ -217,90 +217,104 @@
     <p class="section-sub">Scrollen Sie — aus der Draufsicht richtet sich der Saal nach und nach zum 3D-Modell auf.</p>
   </div>
 
-  <div class="saal3d" id="saal3d">
-    <div class="saal3d__scene">
-      <div class="saal3d__floor" id="fp">
-        <svg class="fp-svg" viewBox="0 0 900 600" role="img" aria-label="Schematischer Grundriss des Saals mit Bühne, Tanzfläche, Sitzplätzen, Bar, Lounge und Hof">
-        <!-- Wände -->
-        <rect class="fp-wall" x="60" y="70" width="560" height="470" rx="6"/>
-        <rect class="fp-wall fp-wall--out" x="660" y="70" width="180" height="470" rx="6"/>
-        <line class="fp-door" x1="620" y1="250" x2="660" y2="250"/>
-        <line class="fp-door" x1="620" y1="330" x2="660" y2="330"/>
+  <div class="fp3d" id="fp3d">
+    <div class="fp3d__sticky">
+      <div class="saal3d" id="saal3d">
+        <div class="saal3d__scene">
+          <div class="saal3d__floor" id="fp">
+            <svg class="fp-svg" viewBox="0 0 900 600" role="img" aria-label="Grundriss des Saals mit Bühne, Tanzfläche, Sitzplätzen, Bar, Lounge, Empfang und Hof">
+              <!-- Umriss: achteckiger Saal -->
+              <polygon class="fp-wall" points="118,118 562,118 616,172 616,482 562,536 118,536 64,482 64,172"/>
+              <!-- Hof-Terrasse (Freifläche rechts) -->
+              <path class="fp-wall fp-wall--out" d="M662 168 q0-18 18-18 h150 q18 0 18 18 v300 q0 18-18 18 h-150 q-18 0-18-18 z"/>
+              <line class="fp-door" x1="616" y1="250" x2="662" y2="250"/>
+              <line class="fp-door" x1="616" y1="330" x2="662" y2="330"/>
 
-        <!-- Bühne -->
-        <g class="zone" data-zone="buehne">
-          <rect class="fp-fill fp-stage" x="150" y="100" width="380" height="66" rx="4"/>
-          <line class="fp-line" x1="150" y1="123" x2="530" y2="123"/>
-          <path class="fp-glow" d="M150 100h380v66h-380z"/>
-          <text class="fp-label" x="340" y="139">BÜHNE</text>
-        </g>
+              <!-- Bühne (halbrunde Apsis) -->
+              <g class="zone" data-zone="buehne" role="button" tabindex="0" aria-label="Bühne — Bild öffnen">
+                <path class="fp-fill fp-stage" d="M262 118 a78 78 0 0 1 156 0 z"/>
+                <path class="fp-glow" d="M262 118 a78 78 0 0 1 156 0 z"/>
+                <path class="fp-line" d="M282 110 a58 58 0 0 1 116 0" fill="none"/>
+                <text class="fp-label" x="340" y="86">BÜHNE</text>
+              </g>
 
-        <!-- Tanzfläche -->
-        <g class="zone" data-zone="tanz">
-          <rect class="fp-fill fp-dance" x="285" y="250" width="170" height="120" rx="2"/>
-          <g class="fp-parquet">
-            <line x1="300" y1="370" x2="370" y2="250"/><line x1="330" y1="370" x2="400" y2="250"/>
-            <line x1="360" y1="370" x2="430" y2="250"/><line x1="390" y1="370" x2="455" y2="262"/>
-            <line x1="285" y1="352" x2="340" y2="250"/>
-          </g>
-          <text class="fp-label" x="370" y="315">TANZFLÄCHE</text>
-        </g>
+              <!-- Tanzfläche (rund) -->
+              <g class="zone" data-zone="tanz" role="button" tabindex="0" aria-label="Tanzfläche — Bild öffnen">
+                <circle class="fp-fill fp-dance" cx="340" cy="308" r="82"/>
+                <g class="fp-parquet">
+                  <line x1="340" y1="308" x2="340" y2="226"/><line x1="340" y1="308" x2="411" y2="267"/>
+                  <line x1="340" y1="308" x2="411" y2="349"/><line x1="340" y1="308" x2="340" y2="390"/>
+                  <line x1="340" y1="308" x2="269" y2="349"/><line x1="340" y1="308" x2="269" y2="267"/>
+                  <circle cx="340" cy="308" r="46" fill="none"/>
+                </g>
+                <text class="fp-label" x="340" y="313">TANZFLÄCHE</text>
+              </g>
 
-        <!-- Sitzplätze / Tische -->
-        <g class="zone" data-zone="tische">
-          <g class="fp-table"><circle class="seat" cx="150" cy="235" r="24"/><circle class="tbl" cx="150" cy="235" r="13"/></g>
-          <g class="fp-table"><circle class="seat" cx="150" cy="315" r="24"/><circle class="tbl" cx="150" cy="315" r="13"/></g>
-          <g class="fp-table"><circle class="seat" cx="150" cy="395" r="24"/><circle class="tbl" cx="150" cy="395" r="13"/></g>
-          <g class="fp-table"><circle class="seat" cx="560" cy="235" r="24"/><circle class="tbl" cx="560" cy="235" r="13"/></g>
-          <g class="fp-table"><circle class="seat" cx="560" cy="315" r="24"/><circle class="tbl" cx="560" cy="315" r="13"/></g>
-          <g class="fp-table"><circle class="seat" cx="560" cy="395" r="24"/><circle class="tbl" cx="560" cy="395" r="13"/></g>
-          <g class="fp-table"><circle class="seat" cx="300" cy="450" r="24"/><circle class="tbl" cx="300" cy="450" r="13"/></g>
-          <g class="fp-table"><circle class="seat" cx="440" cy="450" r="24"/><circle class="tbl" cx="440" cy="450" r="13"/></g>
-          <text class="fp-label" x="150" y="180">SITZPLÄTZE</text>
-        </g>
+              <!-- Sitzplätze / Tische (im Bogen) -->
+              <g class="zone" data-zone="tische" role="button" tabindex="0" aria-label="Sitzplätze — Bild öffnen">
+                <g class="fp-table"><circle class="seat" cx="150" cy="250" r="24"/><circle class="tbl" cx="150" cy="250" r="13"/></g>
+                <g class="fp-table"><circle class="seat" cx="140" cy="330" r="24"/><circle class="tbl" cx="140" cy="330" r="13"/></g>
+                <g class="fp-table"><circle class="seat" cx="160" cy="410" r="24"/><circle class="tbl" cx="160" cy="410" r="13"/></g>
+                <g class="fp-table"><circle class="seat" cx="530" cy="250" r="24"/><circle class="tbl" cx="530" cy="250" r="13"/></g>
+                <g class="fp-table"><circle class="seat" cx="540" cy="330" r="24"/><circle class="tbl" cx="540" cy="330" r="13"/></g>
+                <g class="fp-table"><circle class="seat" cx="520" cy="410" r="24"/><circle class="tbl" cx="520" cy="410" r="13"/></g>
+                <g class="fp-table"><circle class="seat" cx="270" cy="470" r="24"/><circle class="tbl" cx="270" cy="470" r="13"/></g>
+                <g class="fp-table"><circle class="seat" cx="410" cy="470" r="24"/><circle class="tbl" cx="410" cy="470" r="13"/></g>
+                <text class="fp-label" x="150" y="196">SITZPLÄTZE</text>
+              </g>
 
-        <!-- Bar -->
-        <g class="zone" data-zone="bar">
-          <rect class="fp-fill fp-bar" x="95" y="490" width="150" height="30" rx="15"/>
-          <circle class="fp-stool" cx="120" cy="480" r="5"/><circle class="fp-stool" cx="150" cy="480" r="5"/>
-          <circle class="fp-stool" cx="180" cy="480" r="5"/><circle class="fp-stool" cx="210" cy="480" r="5"/>
-          <text class="fp-label" x="170" y="510">BAR</text>
-        </g>
+              <!-- Bar (geschwungene Theke) -->
+              <g class="zone" data-zone="bar" role="button" tabindex="0" aria-label="Bar — Bild öffnen">
+                <path class="fp-fill fp-bar" d="M96 512 q70 -34 150 0 l0 14 q-75 -30 -150 0 z"/>
+                <circle class="fp-stool" cx="120" cy="486" r="5"/><circle class="fp-stool" cx="160" cy="476" r="5"/>
+                <circle class="fp-stool" cx="205" cy="476" r="5"/>
+                <text class="fp-label" x="168" y="500">BAR</text>
+              </g>
 
-        <!-- Lounge -->
-        <g class="zone" data-zone="lounge">
-          <rect class="fp-fill fp-sofa" x="490" y="475" width="110" height="26" rx="10"/>
-          <rect class="fp-fill fp-sofa" x="490" y="475" width="26" height="50" rx="10"/>
-          <text class="fp-label" x="560" y="520">LOUNGE</text>
-        </g>
+              <!-- Lounge (Erker unten rechts) -->
+              <g class="zone" data-zone="lounge" role="button" tabindex="0" aria-label="Lounge — Bild öffnen">
+                <path class="fp-fill fp-sofa" d="M452 536 a48 48 0 0 1 96 0 z"/>
+                <path class="fp-sofa-in" d="M470 536 a30 30 0 0 1 60 0" fill="none"/>
+                <text class="fp-label" x="500" y="524">LOUNGE</text>
+              </g>
 
-        <!-- Empfang / Eingang -->
-        <g class="zone" data-zone="empfang">
-          <rect class="fp-open" x="315" y="536" width="70" height="8"/>
-          <path class="fp-arrow" d="M350 560v-24m0 0-8 8m8-8 8 8"/>
-          <text class="fp-label" x="350" y="585">EMPFANG</text>
-        </g>
+              <!-- Empfang / Eingang -->
+              <g class="zone" data-zone="empfang" role="button" tabindex="0" aria-label="Empfang — Bild öffnen">
+                <rect class="fp-open" x="306" y="532" width="68" height="8"/>
+                <path class="fp-arrow" d="M340 566v-26m0 0-8 8m8-8 8 8"/>
+                <text class="fp-label" x="340" y="588">EMPFANG</text>
+              </g>
 
-        <!-- Hof / Terrasse -->
-        <g class="zone" data-zone="hof">
-          <circle class="fp-tree" cx="710" cy="150" r="16"/><circle class="fp-tree" cx="790" cy="200" r="16"/>
-          <circle class="fp-tree" cx="720" cy="440" r="16"/>
-          <circle class="fp-fountain" cx="750" cy="305" r="22"/><circle class="fp-fountain-in" cx="750" cy="305" r="9"/>
-          <text class="fp-label" x="750" y="110">HOF · TERRASSE</text>
-        </g>
-        </svg>
+              <!-- Hof / Terrasse -->
+              <g class="zone" data-zone="hof" role="button" tabindex="0" aria-label="Hof und Terrasse — Bild öffnen">
+                <circle class="fp-tree" cx="712" cy="205" r="16"/><circle class="fp-tree" cx="792" cy="250" r="16"/>
+                <circle class="fp-tree" cx="720" cy="430" r="16"/>
+                <circle class="fp-fountain" cx="752" cy="330" r="22"/><circle class="fp-fountain-in" cx="752" cy="330" r="9"/>
+                <text class="fp-label" x="752" y="170">HOF · TERRASSE</text>
+              </g>
+            </svg>
 
-        <!-- 3D-Hülle: Wände + Dach (erscheinen beim Kippen) -->
-        <div class="shell" aria-hidden="true">
-          <div class="wall wall--n"></div>
-          <div class="wall wall--s"></div>
-          <div class="wall wall--w"></div>
-          <div class="wall wall--e"></div>
-          <div class="saal3d__roof"></div>
+            <!-- 3D-Hülle: Wände + Glasdach (erscheinen beim Kippen) -->
+            <div class="shell" aria-hidden="true">
+              <div class="wall wall--n"></div>
+              <div class="wall wall--s"></div>
+              <div class="wall wall--w"></div>
+              <div class="wall wall--e"></div>
+              <div class="saal3d__roof">
+                <svg viewBox="0 0 552 418" preserveAspectRatio="none">
+                  <polygon class="roof-glass" points="54,0 498,0 552,54 552,364 498,418 54,418 0,364 0,54"/>
+                  <g class="roof-mullion">
+                    <line x1="138" y1="0" x2="138" y2="418"/><line x1="276" y1="0" x2="276" y2="418"/><line x1="414" y1="0" x2="414" y2="418"/>
+                    <line x1="0" y1="140" x2="552" y2="140"/><line x1="0" y1="278" x2="552" y2="278"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <p class="saal3d__hint" aria-hidden="true"><span>Von oben ansehen</span> · weiter scrollen · <span>3D-Modell</span></p>
     </div>
-    <p class="saal3d__hint" aria-hidden="true"><span>Draufsicht</span> · scrollen · <span>3D-Modell</span></p>
   </div>
 
   <ul class="fp-legend fp-legend--row" id="fpLegend">
@@ -312,6 +326,16 @@
     <li data-zone="hof"><span class="fp-legend__no">06</span><span><strong>Hof · Terrasse</strong>Freiluftbereich</span></li>
     <li data-zone="empfang"><span class="fp-legend__no">07</span><span><strong>Empfang</strong>Eingang &amp; Garderobe</span></li>
   </ul>
+
+  <!-- Bild-Popup je Bereich -->
+  <div class="fp-modal" id="fpModal" hidden>
+    <div class="fp-modal__backdrop" data-close></div>
+    <figure class="fp-modal__fig" role="dialog" aria-modal="true" aria-labelledby="fpModalCap">
+      <button class="fp-modal__close" data-close aria-label="Schließen">&times;</button>
+      <img id="fpModalImg" alt="">
+      <figcaption id="fpModalCap"></figcaption>
+    </figure>
+  </div>
 </section>
 
 <!-- ============ KONTAKT ============ -->
@@ -544,9 +568,13 @@
   <div class="footer__bar">
     <p class="footer__legal">© <span id="year"></span> Paradise Saal · Beispiel-Referenz. Name &amp; Kontaktdaten sind Platzhalter.</p>
     <!-- Designed-by-Credit — dezent. Logo bei Bedarf in assets/img/primepage-logo.svg ablegen. -->
-    <a class="pp-credit" href="#" aria-label="Designed by Prime Page">
+    <!-- PLATZHALTER: href auf echte Prime-Page-Domain setzen; Logo in assets/img/primepage-logo.svg ablegen -->
+    <a class="pp-credit" href="https://www.prime-page.example" target="_blank" rel="noopener" aria-label="Designed by Prime Page — zur Website">
       <span class="pp-credit__mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2 4 7v10l8 5 8-5V7l-8-5Z"/><path d="M12 7v10M8 9.2v5.6M16 9.2v5.6"/></svg>
+        <img class="pp-credit__logo" src="assets/img/primepage-logo.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
+        <span class="pp-credit__fallback">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2 4 7v10l8 5 8-5V7l-8-5Z"/><path d="M12 7v10M8 9.2v5.6M16 9.2v5.6"/></svg>
+        </span>
       </span>
       <span class="pp-credit__txt">designed by <strong>Prime&nbsp;Page</strong></span>
     </a>

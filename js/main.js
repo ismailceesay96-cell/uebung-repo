@@ -37,7 +37,8 @@
   /* ---- Reveal beim Scrollen ---- */
   var revealEls = [
     '.section-head', '.occ', '.gtile', '.location__intro',
-    '.stat', '.feature', '.kontakt__frame'
+    '.stat', '.feature', '.kontakt__frame',
+    '.rundgang__overlay', '.wstep__title', '.fp-legend--row li'
   ].reduce(function (acc, sel) {
     return acc.concat(Array.prototype.slice.call(document.querySelectorAll(sel)));
   }, []);
@@ -82,18 +83,61 @@
     zones.forEach(wire);
     legendItems.forEach(function (li) { wire(li); li.setAttribute('tabindex', '0'); });
 
-    /* Draufsicht → 3D: Kippwinkel per Scroll */
+    /* Bild-Popup je Bereich (Platzhalter-Bilder — später ersetzen) */
+    var zoneImages = {
+      buehne:  { img: 'assets/img/venue-ballsaal.jpg', cap: 'Bühne' },
+      tanz:    { img: 'assets/img/venue-panorama.jpg', cap: 'Tanzfläche' },
+      tische:  { img: 'assets/img/venue-tische.jpg',   cap: 'Sitzplätze' },
+      bar:     { img: 'assets/img/venue-catering.jpg', cap: 'Bar' },
+      lounge:  { img: 'assets/img/venue-tische.jpg',   cap: 'Lounge' },
+      hof:     { img: 'assets/img/venue-panorama.jpg', cap: 'Hof · Terrasse' },
+      empfang: { img: 'assets/img/venue-buffet.jpg',   cap: 'Empfang' }
+    };
+    var modal = document.getElementById('fpModal');
+    var modalImg = document.getElementById('fpModalImg');
+    var modalCap = document.getElementById('fpModalCap');
+    var lastFocus = null;
+    function openModal(name) {
+      var z = zoneImages[name]; if (!z || !modal) return;
+      var src = (window.__ZONE_IMAGES__ && window.__ZONE_IMAGES__[name]) || z.img;
+      modalImg.src = src; modalImg.alt = z.cap; modalCap.textContent = z.cap;
+      lastFocus = document.activeElement;
+      modal.hidden = false; document.body.style.overflow = 'hidden';
+      var c = modal.querySelector('.fp-modal__close'); if (c) c.focus();
+    }
+    function closeModal() {
+      if (!modal) return;
+      modal.hidden = true; document.body.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    if (modal) {
+      modal.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', closeModal); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
+    }
+    function wireOpen(el) {
+      var name = el.getAttribute('data-zone');
+      el.addEventListener('click', function () { openModal(name); });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(name); }
+      });
+    }
+    zones.forEach(wireOpen);
+    legendItems.forEach(wireOpen);
+
+    /* Erst alles von oben — dann Drehung kurz vor dem Wegscrollen */
+    var pin = document.getElementById('fp3d');
     var saal = document.getElementById('saal3d');
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (saal && !reduce) {
+    if (pin && saal && !reduce) {
       var ticking = false;
       function updateTilt() {
-        var r = saal.getBoundingClientRect();
+        var r = pin.getBoundingClientRect();
         var vh = window.innerHeight || document.documentElement.clientHeight;
-        // 0 wenn das Element gerade von unten erscheint, 1 sobald es im oberen Drittel steht
-        var start = vh * 0.9, end = vh * 0.25;
-        var p = (start - r.top) / (start - end);
-        p = Math.max(0, Math.min(1, p));
+        var scrollable = r.height - vh;
+        var through = scrollable > 0 ? (-r.top) / scrollable : 0;   // 0..1 durch die Sektion
+        through = Math.max(0, Math.min(1, through));
+        // flach bleiben bis 55 %, dann in der letzten Phase drehen
+        var p = Math.max(0, Math.min(1, (through - 0.55) / 0.4));
         saal.style.setProperty('--p', p.toFixed(3));
       }
       window.addEventListener('scroll', function () {
