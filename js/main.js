@@ -55,49 +55,99 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
-  /* ---- Formular-Validierung ---- */
-  var form = document.getElementById('anfrageForm');
+  /* ---- Angebot-Assistent (mehrstufig) ---- */
+  var form = document.getElementById('angebotForm');
   if (form) {
     var status = document.getElementById('formStatus');
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.wstep'));
+    var stepDots = Array.prototype.slice.call(document.querySelectorAll('#wizardSteps .steps__item'));
+    var current = 0;
+    var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function setError(field, msg) {
-      var wrap = field.closest('.field');
+      var wrap = field.closest('.field') || field.closest('.check--privacy') || field.parentElement;
       var err = wrap ? wrap.querySelector('.field__err') : null;
-      if (msg) { wrap.classList.add('is-invalid'); if (err) err.textContent = msg; }
-      else { wrap.classList.remove('is-invalid'); if (err) err.textContent = ''; }
+      if (!err) { // Fehler-Element evtl. Geschwister
+        var sib = wrap && wrap.nextElementSibling;
+        if (sib && sib.classList.contains('field__err')) err = sib;
+      }
+      if (msg) { if (wrap) wrap.classList.add('is-invalid'); if (err) err.textContent = msg; }
+      else { if (wrap) wrap.classList.remove('is-invalid'); if (err) err.textContent = ''; }
     }
 
-    function validate() {
+    /* Ja/Nein-Termin: passendes Feld einblenden */
+    var reveals = form.querySelectorAll('.reveal-block');
+    form.querySelectorAll('input[name="termin"]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        reveals.forEach(function (b) { b.hidden = (b.getAttribute('data-when') !== r.value); });
+        setError(form.querySelector('input[name="termin"]'), '');
+      });
+    });
+
+    /* Validierung je Schritt */
+    function validateStep(idx) {
       var ok = true;
-      var name = form.name, email = form.email, anlass = form.anlass;
-      if (!name.value.trim()) { setError(name, 'Bitte geben Sie Ihren Namen an.'); ok = false; } else setError(name, '');
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { setError(email, 'Bitte eine gültige E-Mail angeben.'); ok = false; } else setError(email, '');
-      if (!anlass.value) { setError(anlass, 'Bitte einen Anlass wählen.'); ok = false; } else setError(anlass, '');
+      if (idx === 0) {
+        if (!form.art.value) { setError(form.art, 'Bitte Art der Veranstaltung wählen.'); ok = false; } else setError(form.art, '');
+        var terminChecked = form.querySelector('input[name="termin"]:checked');
+        var terminErr = document.querySelector('.field__err[data-for="termin"]');
+        if (!terminChecked) { if (terminErr) terminErr.textContent = 'Bitte auswählen.'; ok = false; } else if (terminErr) terminErr.textContent = '';
+      }
+      if (idx === 1) {
+        var mn = form.pmin.value ? parseInt(form.pmin.value, 10) : null;
+        var mx = form.pmax.value ? parseInt(form.pmax.value, 10) : null;
+        if (mn && mx && mx < mn) { setError(form.pmax, 'Maximum darf nicht kleiner als Minimum sein.'); ok = false; } else setError(form.pmax, '');
+      }
+      if (idx === 2) {
+        var nameF = form.elements['name'], emailF = form.elements['email'], dsF = form.elements['datenschutz'];
+        if (!nameF.value.trim()) { setError(nameF, 'Bitte geben Sie Ihren Namen an.'); ok = false; } else setError(nameF, '');
+        if (!emailRe.test(emailF.value.trim())) { setError(emailF, 'Bitte eine gültige E-Mail angeben.'); ok = false; } else setError(emailF, '');
+        var dsErr = document.querySelector('.field__err[data-for="datenschutz"]');
+        if (!dsF.checked) { if (dsErr) dsErr.textContent = 'Bitte der Datenschutzerklärung zustimmen.'; ok = false; } else if (dsErr) dsErr.textContent = '';
+      }
       return ok;
     }
 
-    // Inline-Validierung beim Verlassen des Feldes
-    ['name', 'email', 'anlass'].forEach(function (n) {
-      var f = form[n];
-      f.addEventListener('blur', function () {
-        if (n === 'name' && !f.value.trim()) setError(f, 'Bitte geben Sie Ihren Namen an.');
-        else if (n === 'email' && f.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim())) setError(f, 'Bitte eine gültige E-Mail angeben.');
-        else if (n === 'anlass' && !f.value) setError(f, 'Bitte einen Anlass wählen.');
-        else setError(f, '');
+    function showStep(idx) {
+      steps.forEach(function (s, i) { s.hidden = i !== idx; s.classList.toggle('is-active', i === idx); });
+      stepDots.forEach(function (d, i) {
+        d.classList.toggle('is-active', i === idx);
+        d.classList.toggle('is-done', i < idx);
       });
+      current = idx;
+      var frame = document.querySelector('.kontakt__frame');
+      if (frame) frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var firstField = steps[idx].querySelector('input:not([type=radio]):not([type=checkbox]), select, textarea');
+      if (firstField) firstField.focus({ preventScroll: true });
+    }
+
+    form.querySelectorAll('[data-next]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        status.textContent = '';
+        if (!validateStep(current)) {
+          var fi = steps[current].querySelector('.is-invalid input, .is-invalid select, .field__err:not(:empty)');
+          if (fi && fi.focus) fi.focus();
+          return;
+        }
+        if (current < steps.length - 1) showStep(current + 1);
+      });
+    });
+    form.querySelectorAll('[data-prev]').forEach(function (b) {
+      b.addEventListener('click', function () { if (current > 0) showStep(current - 1); });
     });
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       status.textContent = '';
-      if (!validate()) {
-        var firstInvalid = form.querySelector('.field.is-invalid input, .field.is-invalid select');
-        if (firstInvalid) firstInvalid.focus();
+      if (!validateStep(2)) {
+        var fi = steps[2].querySelector('.is-invalid input, .field__err:not(:empty)');
+        if (fi && fi.focus) fi.focus();
         return;
       }
-      // Demo-Referenz: kein echter Versand — Bestätigung anzeigen.
-      status.textContent = 'Danke, ' + form.name.value.trim() + '! Ihre Anfrage ist bei uns eingegangen — wir melden uns in Kürze.';
-      form.reset();
+      // Beispiel-Referenz: kein echter Versand — Bestätigung anzeigen.
+      steps.forEach(function (s) { s.hidden = true; s.classList.remove('is-active'); });
+      stepDots.forEach(function (d) { d.classList.add('is-done'); d.classList.remove('is-active'); });
+      status.textContent = 'Vielen Dank, ' + form.elements['name'].value.trim() + '! Ihre Angebotsanfrage ist eingegangen — wir melden uns in Kürze mit einem persönlichen Vorschlag.';
     });
   }
 })();

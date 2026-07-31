@@ -213,28 +213,27 @@
 <section class="kontakt" id="kontakt">
   <div class="kontakt__frame">
     <div class="section-head">
-      <p class="eyebrow eyebrow--center">Anfrage</p>
-      <h2 class="section-title">Lassen Sie uns Ihr Fest planen</h2>
-      <p class="section-sub">Erzählen Sie uns von Ihrem Anlass — wir melden uns mit einem Terminvorschlag.</p>
+      <p class="eyebrow eyebrow--center">Angebot</p>
+      <h2 class="section-title">Angebot anfordern</h2>
+      <p class="section-sub">In drei Schritten zu Ihrem persönlichen Angebot — wir treten anschließend mit Ihnen in Kontakt.</p>
     </div>
 
-    <form class="form" id="anfrageForm" novalidate>
-      <div class="form__row">
+    <!-- Fortschritt -->
+    <ol class="steps" id="wizardSteps" aria-hidden="true">
+      <li class="steps__item is-active" data-step="1"><span>1</span>Veranstaltung</li>
+      <li class="steps__item" data-step="2"><span>2</span>Details</li>
+      <li class="steps__item" data-step="3"><span>3</span>Kontakt</li>
+    </ol>
+
+    <form class="wizard" id="angebotForm" novalidate>
+
+      <!-- ---------- Schritt 1: Veranstaltung ---------- -->
+      <fieldset class="wstep is-active" data-step="1">
+        <legend class="wstep__title">Ihre Veranstaltung</legend>
+
         <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required>
-          <p class="field__err" data-for="name"></p>
-        </div>
-        <div class="field">
-          <label for="email">E-Mail</label>
-          <input id="email" name="email" type="email" autocomplete="email" required>
-          <p class="field__err" data-for="email"></p>
-        </div>
-      </div>
-      <div class="form__row">
-        <div class="field">
-          <label for="anlass">Anlass</label>
-          <select id="anlass" name="anlass" required>
+          <label for="art">Art der Veranstaltung *</label>
+          <select id="art" name="art" required>
             <option value="">Bitte wählen</option>
             <option>Hochzeit</option>
             <option>Abschlussball</option>
@@ -246,19 +245,140 @@
             <option>Gala / Ball</option>
             <option>Sonstiges</option>
           </select>
-          <p class="field__err" data-for="anlass"></p>
+          <p class="field__err" data-for="art"></p>
+        </div>
+
+        <div class="field">
+          <label for="wuensche">Wünsche oder weitere Infos</label>
+          <textarea id="wuensche" name="wuensche" rows="3" placeholder="Erzählen Sie uns von Ihren Vorstellungen …"></textarea>
+        </div>
+
+        <div class="field">
+          <span class="field__grouplabel">Gibt es einen festen Termin? *</span>
+          <div class="choice" role="radiogroup" aria-label="Fester Termin">
+            <label class="choice__opt">
+              <input type="radio" name="termin" value="ja" required>
+              <span>Ja, fester Termin</span>
+            </label>
+            <label class="choice__opt">
+              <input type="radio" name="termin" value="nein">
+              <span>Nein, noch offen</span>
+            </label>
+          </div>
+          <p class="field__err" data-for="termin"></p>
+        </div>
+
+        <!-- Reveal: fester Termin -->
+        <div class="reveal-block" data-when="ja" hidden>
+          <div class="field">
+            <label for="datum">Datum</label>
+            <input id="datum" name="datum" type="date">
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label for="beginn">Beginn</label>
+              <input id="beginn" name="beginn" type="time">
+            </div>
+            <div class="field">
+              <label for="ende">Schluss</label>
+              <input id="ende" name="ende" type="time">
+            </div>
+          </div>
+        </div>
+
+        <!-- Reveal: kein fester Termin -->
+        <div class="reveal-block" data-when="nein" hidden>
+          <div class="field">
+            <label for="zeitraum">In welchem Zeitraum wünschen Sie sich Ihren Termin?</label>
+            <input id="zeitraum" name="zeitraum" type="text" placeholder="z. B. Frühsommer 2026 · Wochenende im Mai">
+          </div>
+        </div>
+
+        <div class="wizard__nav">
+          <span></span>
+          <button type="button" class="btn btn--gold" data-next>Weiter</button>
+        </div>
+      </fieldset>
+
+      <!-- ---------- Schritt 2: Details ---------- -->
+      <fieldset class="wstep" data-step="2" hidden>
+        <legend class="wstep__title">Weitere Informationen zur Veranstaltung</legend>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="pmin">Personenzahl (mindestens)</label>
+            <input id="pmin" name="pmin" type="number" inputmode="numeric" min="1" max="600">
+          </div>
+          <div class="field">
+            <label for="pmax">Personenzahl (maximal)</label>
+            <input id="pmax" name="pmax" type="number" inputmode="numeric" min="1" max="600">
+            <p class="field__err" data-for="pmax"></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="budget">Maximalbudget (optional)</label>
+          <select id="budget" name="budget">
+            <option value="">Keine Angabe</option>
+            <option>bis 2.500 €</option>
+            <option>2.500 – 5.000 €</option>
+            <option>5.000 – 10.000 €</option>
+            <option>10.000 – 20.000 €</option>
+            <option>über 20.000 €</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <span class="field__grouplabel">Gewünschte Dienstleistungen</span>
+          <div class="checks">
+            <label class="check"><input type="checkbox" name="service" value="Speisen / Catering"><span>Speisen / Catering</span></label>
+            <label class="check"><input type="checkbox" name="service" value="Getränke / Bar"><span>Getränke / Bar</span></label>
+            <label class="check"><input type="checkbox" name="service" value="Musik / DJ"><span>Musik / DJ</span></label>
+            <label class="check"><input type="checkbox" name="service" value="Dekoration"><span>Dekoration</span></label>
+            <label class="check"><input type="checkbox" name="service" value="Fotograf / Video"><span>Fotograf / Video</span></label>
+            <label class="check"><input type="checkbox" name="service" value="Torte"><span>Torte</span></label>
+          </div>
+        </div>
+
+        <div class="wizard__nav">
+          <button type="button" class="btn btn--ghost" data-prev>Zurück</button>
+          <button type="button" class="btn btn--gold" data-next>Weiter</button>
+        </div>
+      </fieldset>
+
+      <!-- ---------- Schritt 3: Kontakt ---------- -->
+      <fieldset class="wstep" data-step="3" hidden>
+        <legend class="wstep__title">Ihre Kontaktdaten</legend>
+
+        <div class="form__row">
+          <div class="field">
+            <label for="name">Name *</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+            <p class="field__err" data-for="name"></p>
+          </div>
+          <div class="field">
+            <label for="email">E-Mail *</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+            <p class="field__err" data-for="email"></p>
+          </div>
         </div>
         <div class="field">
-          <label for="gaeste">Gäste (ca.)</label>
-          <input id="gaeste" name="gaeste" type="number" inputmode="numeric" min="1" max="600">
-          <p class="field__hint">Grobe Schätzung genügt.</p>
+          <label for="telefon">Telefon</label>
+          <input id="telefon" name="telefon" type="tel" autocomplete="tel">
         </div>
-      </div>
-      <div class="field">
-        <label for="nachricht">Ihre Nachricht</label>
-        <textarea id="nachricht" name="nachricht" rows="4"></textarea>
-      </div>
-      <button type="submit" class="btn btn--gold btn--full">Anfrage senden</button>
+
+        <label class="check check--privacy">
+          <input type="checkbox" name="datenschutz" required>
+          <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *</span>
+        </label>
+        <p class="field__err" data-for="datenschutz"></p>
+
+        <div class="wizard__nav">
+          <button type="button" class="btn btn--ghost" data-prev>Zurück</button>
+          <button type="submit" class="btn btn--gold">Angebot anfordern</button>
+        </div>
+      </fieldset>
+
       <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
 
