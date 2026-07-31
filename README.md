@@ -1,11 +1,12 @@
-# Palais Doré — Event-Location (Beispiel-Referenz)
+# Paradise Saal — Event-Location (Beispiel-Referenz)
 
 Elegante, visuell fokussierte One-Page-Website für eine Event-Location
 (Hochzeiten, Firmenevents, Geburtstage, Abschlussbälle, Silvester u. v. m.).
 Design in **Gold & Schwarz**, romantisch, aber betont edel.
 
-> **„Palais Doré"** ist ein Platzhalter-Name. Namen, Kontaktdaten und alle
-> Bilder sind Beispiele und sollen ersetzt werden.
+> **„Paradise Saal"** dient als Beispiel-Referenz. Die Fotos sind echt,
+> Kontaktdaten, Social-Links und die Angaben in Impressum/Datenschutz sind
+> Platzhalter und vor Veröffentlichung durch echte Daten zu ersetzen.
 
 ## Aufbau
 
