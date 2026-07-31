@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
+<defs>
+<radialGradient id="g" cx="50%" cy="28%" r="85%">
+<stop offset="0%" stop-color="#1a1512"/><stop offset="100%" stop-color="#0d0b0c"/>
+</radialGradient>
+<linearGradient id="vig" x1="0" y1="0" x2="0" y2="1">
+<stop offset="55%" stop-color="#000" stop-opacity="0"/>
+<stop offset="100%" stop-color="#000" stop-opacity="0.72"/>
+</linearGradient>
+<filter id="b"><feGaussianBlur stdDeviation="7"/></filter>
+</defs>
+<rect width="1200" height="1500" fill="url(#g)"/>
+<g filter="url(#b)"><circle cx="504" cy="870" r="6" fill="#E8C77A" opacity="0.43"/><circle cx="282" cy="869" r="9" fill="#E8C77A" opacity="0.43"/><circle cx="512" cy="605" r="9" fill="#E8C77A" opacity="0.07"/><circle cx="574" cy="641" r="3" fill="#E8C77A" opacity="0.14"/><circle cx="396" cy="313" r="14" fill="#E8C77A" opacity="0.32"/><circle cx="500" cy="762" r="2" fill="#E8C77A" opacity="0.09"/><circle cx="329" cy="129" r="6" fill="#E8C77A" opacity="0.14"/><circle cx="938" cy="554" r="2" fill="#E8C77A" opacity="0.17"/><circle cx="865" cy="889" r="20" fill="#E8C77A" opacity="0.46"/><circle cx="146" cy="632" r="6" fill="#E8C77A" opacity="0.51"/><circle cx="611" cy="94" r="20" fill="#E8C77A" opacity="0.25"/><circle cx="611" cy="338" r="3" fill="#E8C77A" opacity="0.16"/><circle cx="193" cy="897" r="3" fill="#E8C77A" opacity="0.45"/><circle cx="446" cy="600" r="20" fill="#E8C77A" opacity="0.29"/><circle cx="1120" cy="1049" r="6" fill="#E8C77A" opacity="0.22"/><circle cx="780" cy="74" r="6" fill="#E8C77A" opacity="0.5"/><circle cx="234" cy="1029" r="4" fill="#E8C77A" opacity="0.53"/><circle cx="27" cy="473" r="6" fill="#E8C77A" opacity="0.52"/><circle cx="1097" cy="582" r="4" fill="#E8C77A" opacity="0.24"/><circle cx="756" cy="1047" r="20" fill="#E8C77A" opacity="0.17"/><circle cx="831" cy="895" r="6" fill="#E8C77A" opacity="0.12"/><circle cx="913" cy="841" r="9" fill="#E8C77A" opacity="0.39"/><circle cx="878" cy="167" r="4" fill="#E8C77A" opacity="0.12"/><circle cx="136" cy="306" r="2" fill="#E8C77A" opacity="0.49"/><circle cx="504" cy="624" r="4" fill="#E8C77A" opacity="0.52"/><circle cx="315" cy="1017" r="2" fill="#E8C77A" opacity="0.06"/><circle cx="1048" cy="1103" r="4" fill="#E8C77A" opacity="0.17"/><circle cx="577" cy="683" r="2" fill="#E8C77A" opacity="0.12"/><circle cx="315" cy="906" r="20" fill="#E8C77A" opacity="0.33"/><circle cx="845" cy="420" r="2" fill="#E8C77A" opacity="0.5"/><circle cx="251" cy="143" r="4" fill="#E8C77A" opacity="0.35"/><circle cx="325" cy="930" r="14" fill="#E8C77A" opacity="0.26"/><circle cx="25" cy="363" r="3" fill="#E8C77A" opacity="0.48"/><circle cx="729" cy="520" r="4" fill="#E8C77A" opacity="0.38"/><circle cx="624" cy="25" r="2" fill="#E8C77A" opacity="0.51"/><circle cx="277" cy="345" r="20" fill="#E8C77A" opacity="0.12"/><circle cx="375" cy="492" r="9" fill="#E8C77A" opacity="0.25"/><circle cx="133" cy="731" r="3" fill="#E8C77A" opacity="0.35"/></g>
+<rect x="46" y="46" width="1108" height="1408" fill="none" stroke="#C9A24B" stroke-opacity="0.5" stroke-width="2"/>
+<rect x="60" y="60" width="1080" height="1380" fill="none" stroke="#C9A24B" stroke-opacity="0.22" stroke-width="1"/>
+<rect width="1200" height="1500" fill="url(#vig)"/>
+<text x="50%" y="1360" text-anchor="middle" font-family="Georgia, serif" font-size="30" letter-spacing="10" fill="#E8C77A" opacity="0.9">GALA · 07</text>
+<text x="50%" y="1404" text-anchor="middle" font-family="Georgia, serif" font-size="20" letter-spacing="4" fill="#cbb98f" opacity="0.55">PALAIS DORÉ · PLATZHALTER</text>
+</svg>
