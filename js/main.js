@@ -55,6 +55,34 @@
     revealEls.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---- Raumplan: Reveal + Hover-Verknüpfung ---- */
+  var fp = document.getElementById('fp');
+  if (fp) {
+    if ('IntersectionObserver' in window) {
+      var fpo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { fp.classList.add('is-in'); fpo.disconnect(); } });
+      }, { threshold: 0.25 });
+      fpo.observe(fp);
+    } else { fp.classList.add('is-in'); }
+
+    var zones = Array.prototype.slice.call(fp.querySelectorAll('.zone'));
+    var legendItems = Array.prototype.slice.call(document.querySelectorAll('#fpLegend li'));
+    function highlight(name, on) {
+      fp.classList.toggle('is-dim', on);
+      zones.forEach(function (z) { z.classList.toggle('is-hi', on && z.getAttribute('data-zone') === name); });
+      legendItems.forEach(function (li) { li.classList.toggle('is-hi', on && li.getAttribute('data-zone') === name); });
+    }
+    function wire(el) {
+      var name = el.getAttribute('data-zone');
+      el.addEventListener('mouseenter', function () { highlight(name, true); });
+      el.addEventListener('mouseleave', function () { highlight(name, false); });
+      el.addEventListener('focus', function () { highlight(name, true); });
+      el.addEventListener('blur', function () { highlight(name, false); });
+    }
+    zones.forEach(wire);
+    legendItems.forEach(function (li) { wire(li); li.setAttribute('tabindex', '0'); });
+  }
+
   /* ---- Angebot-Assistent (mehrstufig) ---- */
   var form = document.getElementById('angebotForm');
   if (form) {

@@ -22,8 +22,8 @@
     <a href="#anlaesse">Anlässe</a>
     <a href="#galerie">Galerie</a>
     <a href="#rundgang">Der Saal</a>
-    <a href="#location">Location</a>
-    <a href="#kontakt" class="nav__cta">Termin anfragen</a>
+    <a href="#raumplan">Raumplan</a>
+    <a href="#kontakt" class="nav__cta">Angebot anfordern</a>
   </nav>
   <button class="nav__burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span>
@@ -33,8 +33,8 @@
   <a href="#anlaesse">Anlässe</a>
   <a href="#galerie">Galerie</a>
   <a href="#rundgang">Der Saal</a>
-  <a href="#location">Location</a>
-  <a href="#kontakt">Termin anfragen</a>
+  <a href="#raumplan">Raumplan</a>
+  <a href="#kontakt">Angebot anfordern</a>
 </div>
 
 <!-- ============ HERO ============ -->
@@ -207,6 +207,99 @@
     <li class="feature"><h3>Dekoration</h3><p>Florale Gestaltung und Tischdekoration nach Ihrem Farbkonzept.</p></li>
     <li class="feature"><h3>Barrierefrei</h3><p>Ebenerdiger Zugang, Aufzug und barrierefreie Sanitäranlagen.</p></li>
   </ul>
+</section>
+
+<!-- ============ RAUMPLAN / GRUNDRISS ============ -->
+<section class="floorplan" id="raumplan">
+  <div class="section-head">
+    <p class="eyebrow eyebrow--center">Raumplan</p>
+    <h2 class="section-title">Der Saal auf einen Blick</h2>
+    <p class="section-sub">Ein schematischer Grundriss — Bühne, Tanzfläche, Sitzplätze, Bar, Lounge und Hof. (Beispielhafte Darstellung.)</p>
+  </div>
+
+  <div class="floorplan__grid">
+    <div class="fp" id="fp">
+      <svg class="fp-svg" viewBox="0 0 900 600" role="img" aria-label="Schematischer Grundriss des Saals mit Bühne, Tanzfläche, Sitzplätzen, Bar, Lounge und Hof">
+        <!-- Wände -->
+        <rect class="fp-wall" x="60" y="70" width="560" height="470" rx="6"/>
+        <rect class="fp-wall fp-wall--out" x="660" y="70" width="180" height="470" rx="6"/>
+        <line class="fp-door" x1="620" y1="250" x2="660" y2="250"/>
+        <line class="fp-door" x1="620" y1="330" x2="660" y2="330"/>
+
+        <!-- Bühne -->
+        <g class="zone" data-zone="buehne">
+          <rect class="fp-fill fp-stage" x="150" y="100" width="380" height="66" rx="4"/>
+          <line class="fp-line" x1="150" y1="123" x2="530" y2="123"/>
+          <path class="fp-glow" d="M150 100h380v66h-380z"/>
+          <text class="fp-label" x="340" y="139">BÜHNE</text>
+        </g>
+
+        <!-- Tanzfläche -->
+        <g class="zone" data-zone="tanz">
+          <rect class="fp-fill fp-dance" x="285" y="250" width="170" height="120" rx="2"/>
+          <g class="fp-parquet">
+            <line x1="300" y1="370" x2="370" y2="250"/><line x1="330" y1="370" x2="400" y2="250"/>
+            <line x1="360" y1="370" x2="430" y2="250"/><line x1="390" y1="370" x2="455" y2="262"/>
+            <line x1="285" y1="352" x2="340" y2="250"/>
+          </g>
+          <text class="fp-label" x="370" y="315">TANZFLÄCHE</text>
+        </g>
+
+        <!-- Sitzplätze / Tische -->
+        <g class="zone" data-zone="tische">
+          <g class="fp-table"><circle class="seat" cx="150" cy="235" r="24"/><circle class="tbl" cx="150" cy="235" r="13"/></g>
+          <g class="fp-table"><circle class="seat" cx="150" cy="315" r="24"/><circle class="tbl" cx="150" cy="315" r="13"/></g>
+          <g class="fp-table"><circle class="seat" cx="150" cy="395" r="24"/><circle class="tbl" cx="150" cy="395" r="13"/></g>
+          <g class="fp-table"><circle class="seat" cx="560" cy="235" r="24"/><circle class="tbl" cx="560" cy="235" r="13"/></g>
+          <g class="fp-table"><circle class="seat" cx="560" cy="315" r="24"/><circle class="tbl" cx="560" cy="315" r="13"/></g>
+          <g class="fp-table"><circle class="seat" cx="560" cy="395" r="24"/><circle class="tbl" cx="560" cy="395" r="13"/></g>
+          <g class="fp-table"><circle class="seat" cx="300" cy="450" r="24"/><circle class="tbl" cx="300" cy="450" r="13"/></g>
+          <g class="fp-table"><circle class="seat" cx="440" cy="450" r="24"/><circle class="tbl" cx="440" cy="450" r="13"/></g>
+          <text class="fp-label" x="150" y="180">SITZPLÄTZE</text>
+        </g>
+
+        <!-- Bar -->
+        <g class="zone" data-zone="bar">
+          <rect class="fp-fill fp-bar" x="95" y="490" width="150" height="30" rx="15"/>
+          <circle class="fp-stool" cx="120" cy="480" r="5"/><circle class="fp-stool" cx="150" cy="480" r="5"/>
+          <circle class="fp-stool" cx="180" cy="480" r="5"/><circle class="fp-stool" cx="210" cy="480" r="5"/>
+          <text class="fp-label" x="170" y="510">BAR</text>
+        </g>
+
+        <!-- Lounge -->
+        <g class="zone" data-zone="lounge">
+          <rect class="fp-fill fp-sofa" x="490" y="475" width="110" height="26" rx="10"/>
+          <rect class="fp-fill fp-sofa" x="490" y="475" width="26" height="50" rx="10"/>
+          <text class="fp-label" x="560" y="520">LOUNGE</text>
+        </g>
+
+        <!-- Empfang / Eingang -->
+        <g class="zone" data-zone="empfang">
+          <rect class="fp-open" x="315" y="536" width="70" height="8"/>
+          <path class="fp-arrow" d="M350 560v-24m0 0-8 8m8-8 8 8"/>
+          <text class="fp-label" x="350" y="585">EMPFANG</text>
+        </g>
+
+        <!-- Hof / Terrasse -->
+        <g class="zone" data-zone="hof">
+          <circle class="fp-tree" cx="710" cy="150" r="16"/><circle class="fp-tree" cx="790" cy="200" r="16"/>
+          <circle class="fp-tree" cx="720" cy="440" r="16"/>
+          <circle class="fp-fountain" cx="750" cy="305" r="22"/><circle class="fp-fountain-in" cx="750" cy="305" r="9"/>
+          <text class="fp-label" x="750" y="110">HOF · TERRASSE</text>
+        </g>
+      </svg>
+    </div>
+
+    <ul class="fp-legend" id="fpLegend">
+      <li data-zone="buehne"><span class="fp-legend__no">01</span><span><strong>Bühne</strong>Live-Musik, Reden &amp; Show</span></li>
+      <li data-zone="tanz"><span class="fp-legend__no">02</span><span><strong>Tanzfläche</strong>Parkett im Herzen des Saals</span></li>
+      <li data-zone="tische"><span class="fp-legend__no">03</span><span><strong>Sitzplätze</strong>Runde Tafeln, flexibel stellbar</span></li>
+      <li data-zone="bar"><span class="fp-legend__no">04</span><span><strong>Bar</strong>Cocktails &amp; Getränke</span></li>
+      <li data-zone="lounge"><span class="fp-legend__no">05</span><span><strong>Lounge</strong>Ruhige Sitzecke zum Verweilen</span></li>
+      <li data-zone="hof"><span class="fp-legend__no">06</span><span><strong>Hof · Terrasse</strong>Freiluftbereich für laue Abende</span></li>
+      <li data-zone="empfang"><span class="fp-legend__no">07</span><span><strong>Empfang</strong>Eingang &amp; Garderobe</span></li>
+    </ul>
+  </div>
 </section>
 
 <!-- ============ KONTAKT ============ -->
