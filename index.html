@@ -209,17 +209,18 @@
   </ul>
 </section>
 
-<!-- ============ RAUMPLAN / GRUNDRISS ============ -->
+<!-- ============ RAUMPLAN / GRUNDRISS (2D → 3D beim Scrollen) ============ -->
 <section class="floorplan" id="raumplan">
   <div class="section-head">
     <p class="eyebrow eyebrow--center">Raumplan</p>
-    <h2 class="section-title">Der Saal auf einen Blick</h2>
-    <p class="section-sub">Ein schematischer Grundriss — Bühne, Tanzfläche, Sitzplätze, Bar, Lounge und Hof. (Beispielhafte Darstellung.)</p>
+    <h2 class="section-title">Veranstaltungsflächen</h2>
+    <p class="section-sub">Scrollen Sie — aus der Draufsicht richtet sich der Saal nach und nach zum 3D-Modell auf.</p>
   </div>
 
-  <div class="floorplan__grid">
-    <div class="fp" id="fp">
-      <svg class="fp-svg" viewBox="0 0 900 600" role="img" aria-label="Schematischer Grundriss des Saals mit Bühne, Tanzfläche, Sitzplätzen, Bar, Lounge und Hof">
+  <div class="saal3d" id="saal3d">
+    <div class="saal3d__scene">
+      <div class="saal3d__floor" id="fp">
+        <svg class="fp-svg" viewBox="0 0 900 600" role="img" aria-label="Schematischer Grundriss des Saals mit Bühne, Tanzfläche, Sitzplätzen, Bar, Lounge und Hof">
         <!-- Wände -->
         <rect class="fp-wall" x="60" y="70" width="560" height="470" rx="6"/>
         <rect class="fp-wall fp-wall--out" x="660" y="70" width="180" height="470" rx="6"/>
@@ -287,19 +288,30 @@
           <circle class="fp-fountain" cx="750" cy="305" r="22"/><circle class="fp-fountain-in" cx="750" cy="305" r="9"/>
           <text class="fp-label" x="750" y="110">HOF · TERRASSE</text>
         </g>
-      </svg>
-    </div>
+        </svg>
 
-    <ul class="fp-legend" id="fpLegend">
-      <li data-zone="buehne"><span class="fp-legend__no">01</span><span><strong>Bühne</strong>Live-Musik, Reden &amp; Show</span></li>
-      <li data-zone="tanz"><span class="fp-legend__no">02</span><span><strong>Tanzfläche</strong>Parkett im Herzen des Saals</span></li>
-      <li data-zone="tische"><span class="fp-legend__no">03</span><span><strong>Sitzplätze</strong>Runde Tafeln, flexibel stellbar</span></li>
-      <li data-zone="bar"><span class="fp-legend__no">04</span><span><strong>Bar</strong>Cocktails &amp; Getränke</span></li>
-      <li data-zone="lounge"><span class="fp-legend__no">05</span><span><strong>Lounge</strong>Ruhige Sitzecke zum Verweilen</span></li>
-      <li data-zone="hof"><span class="fp-legend__no">06</span><span><strong>Hof · Terrasse</strong>Freiluftbereich für laue Abende</span></li>
-      <li data-zone="empfang"><span class="fp-legend__no">07</span><span><strong>Empfang</strong>Eingang &amp; Garderobe</span></li>
-    </ul>
+        <!-- 3D-Hülle: Wände + Dach (erscheinen beim Kippen) -->
+        <div class="shell" aria-hidden="true">
+          <div class="wall wall--n"></div>
+          <div class="wall wall--s"></div>
+          <div class="wall wall--w"></div>
+          <div class="wall wall--e"></div>
+          <div class="saal3d__roof"></div>
+        </div>
+      </div>
+    </div>
+    <p class="saal3d__hint" aria-hidden="true"><span>Draufsicht</span> · scrollen · <span>3D-Modell</span></p>
   </div>
+
+  <ul class="fp-legend fp-legend--row" id="fpLegend">
+    <li data-zone="buehne"><span class="fp-legend__no">01</span><span><strong>Bühne</strong>Live-Musik &amp; Show</span></li>
+    <li data-zone="tanz"><span class="fp-legend__no">02</span><span><strong>Tanzfläche</strong>Parkett im Herzen</span></li>
+    <li data-zone="tische"><span class="fp-legend__no">03</span><span><strong>Sitzplätze</strong>Runde Tafeln</span></li>
+    <li data-zone="bar"><span class="fp-legend__no">04</span><span><strong>Bar</strong>Cocktails &amp; Getränke</span></li>
+    <li data-zone="lounge"><span class="fp-legend__no">05</span><span><strong>Lounge</strong>Sitzecke zum Verweilen</span></li>
+    <li data-zone="hof"><span class="fp-legend__no">06</span><span><strong>Hof · Terrasse</strong>Freiluftbereich</span></li>
+    <li data-zone="empfang"><span class="fp-legend__no">07</span><span><strong>Empfang</strong>Eingang &amp; Garderobe</span></li>
+  </ul>
 </section>
 
 <!-- ============ KONTAKT ============ -->

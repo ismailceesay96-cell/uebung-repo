@@ -81,6 +81,28 @@
     }
     zones.forEach(wire);
     legendItems.forEach(function (li) { wire(li); li.setAttribute('tabindex', '0'); });
+
+    /* Draufsicht → 3D: Kippwinkel per Scroll */
+    var saal = document.getElementById('saal3d');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (saal && !reduce) {
+      var ticking = false;
+      function updateTilt() {
+        var r = saal.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        // 0 wenn das Element gerade von unten erscheint, 1 sobald es im oberen Drittel steht
+        var start = vh * 0.9, end = vh * 0.25;
+        var p = (start - r.top) / (start - end);
+        p = Math.max(0, Math.min(1, p));
+        saal.style.setProperty('--p', p.toFixed(3));
+      }
+      window.addEventListener('scroll', function () {
+        if (ticking) return; ticking = true;
+        requestAnimationFrame(function () { updateTilt(); ticking = false; });
+      }, { passive: true });
+      window.addEventListener('resize', updateTilt);
+      updateTilt();
+    }
   }
 
   /* ---- Angebot-Assistent (mehrstufig) ---- */
