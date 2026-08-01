@@ -755,21 +755,37 @@ a{ color:inherit; text-decoration:none; }
 @media (max-width:760px){
   .nav__links{ display:none; }
   .nav__burger{ display:flex; }
-  .gallery-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:160px; }
+  .gallery-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:150px; gap:10px; }
   .gtile--wide{ grid-column:span 2; }
   .form__row{ grid-template-columns:1fr; }
-  .footer__cols{ grid-template-columns:1fr; }
+  .footer__cols{ grid-template-columns:1fr; gap:2.4rem; }
   .footer__bar{ flex-direction:column; text-align:center; }
   .checks{ grid-template-columns:1fr; }
   .wizard__nav .btn{ min-width:7rem; }
   .contact-channels{ grid-template-columns:repeat(2,1fr); }
-  .contact-call__num{ margin-left:0; font-size:1.3rem; }
-  .rundgang__spacer{ height:260vh; }
+  .contact-call{ flex-direction:column; align-items:flex-start; gap:.4rem; }
+  .contact-call__num{ margin-left:0; font-size:1.35rem; }
+  .rundgang__spacer{ height:220vh; }
+
+  /* weniger Leerraum / kürzere Wege auf dem Handy */
+  .anlaesse, .galerie, .location, .floorplan, .kontakt{
+    padding-top:clamp(3.5rem,11vw,5.5rem); padding-bottom:clamp(3.5rem,11vw,5.5rem);
+  }
+  .story{ padding-top:clamp(2.5rem,9vw,4rem); padding-bottom:clamp(2.5rem,9vw,4rem); }
+  .section-head{ margin-bottom:clamp(2rem,7vw,3rem); }
+
+  /* 3D-Raumplan: kompakter, kürzerer Scroll */
+  .fp3d{ height:165vh; }
+  .fp3d__sticky{ min-height:82vh; }
+  .saal3d{ --h:44px; }
+  .saal3d__hint{ font-size:.66rem; letter-spacing:.12em; gap:.4rem; padding-inline:1rem; }
 }
 @media (max-width:460px){
   .anlaesse__grid{ grid-template-columns:1fr; }
-  .stats{ grid-template-columns:1fr 1fr; }
+  .stats{ grid-template-columns:1fr 1fr; gap:1.75rem 1.25rem; }
   .features{ grid-template-columns:1fr; }
+  .hero__frame{ padding:2.75rem 1.25rem; }
+  .btn{ --bx:1.4rem; letter-spacing:.16em; }
 }
 
 /* Reduced motion */
