@@ -54,7 +54,7 @@
     });
 
     // Gruppen: jede Kachel nacheinander (Stagger nach Position im Container)
-    ['.occ', '.gtile', '.feature', '.stat', '.fp-legend--row li'].forEach(function (sel) {
+    ['.occ', '.gtile', '.feature', '.stat', '.tcard', '.fp-legend--row li'].forEach(function (sel) {
       q(sel).forEach(function (el) {
         var sibs = Array.prototype.slice.call(el.parentElement.children).filter(function (c) { return c.matches(sel); });
         var idx = sibs.indexOf(el);

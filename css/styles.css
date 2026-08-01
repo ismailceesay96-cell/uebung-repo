@@ -327,6 +327,39 @@ a{ color:inherit; text-decoration:none; }
 .story__sig-script{ font-family:var(--script); color:var(--gold-bright); font-size:2.4rem; line-height:1; }
 
 /* ============================================================
+   SOCIAL PROOF / STIMMEN
+   ============================================================ */
+.proof{ padding:clamp(6rem,12vw,11rem) var(--pad); background:var(--noir); }
+.proof__grid{
+  max-width:var(--maxw); margin:0 auto;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1.5rem,3vw,2.25rem);
+}
+.tcard{
+  display:flex; flex-direction:column; gap:1.2rem;
+  padding:clamp(1.75rem,3vw,2.4rem);
+  border:1px solid var(--line-soft); border-radius:var(--r);
+  background:rgba(201,162,75,.03);
+  transition:border-color .4s ease, transform .5s cubic-bezier(.16,.8,.24,1);
+}
+.tcard:hover{ border-color:var(--line); transform:translateY(-4px); }
+.stars{ display:flex; gap:.28rem; color:var(--gold-bright); }
+.stars svg{ width:17px; height:17px; fill:currentColor; }
+.tcard__quote{
+  margin:0; font-family:var(--serif); font-style:italic; font-weight:500;
+  font-size:1.35rem; line-height:1.5; color:var(--champagne);
+}
+.tcard__by{ margin-top:auto; display:flex; flex-direction:column; gap:.25rem; }
+.tcard__name{ font-family:var(--sans); font-weight:600; color:var(--ink); }
+.tcard__meta{ font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-dim); }
+
+.proof-stats{
+  list-style:none; margin:clamp(3.5rem,7vw,6rem) auto 0; padding:0;
+  max-width:var(--maxw); display:grid; grid-template-columns:repeat(3,1fr);
+  gap:2rem; text-align:center;
+}
+.proof-stats .stat{ text-align:center; }
+
+/* ============================================================
    RUNDGANG (Scroll-Video)
    ============================================================ */
 .rundgang{ position:relative; background:#000; }
@@ -761,6 +794,7 @@ a{ color:inherit; text-decoration:none; }
   .footer__cols{ grid-template-columns:1fr; gap:2.4rem; }
   .footer__bar{ flex-direction:column; text-align:center; }
   .checks{ grid-template-columns:1fr; }
+  .proof__grid{ grid-template-columns:1fr; }
   .wizard__nav .btn{ min-width:7rem; }
   .contact-channels{ grid-template-columns:repeat(2,1fr); }
   .contact-call{ flex-direction:column; align-items:flex-start; gap:.4rem; }
@@ -783,6 +817,7 @@ a{ color:inherit; text-decoration:none; }
 @media (max-width:460px){
   .anlaesse__grid{ grid-template-columns:1fr; }
   .stats{ grid-template-columns:1fr 1fr; gap:1.75rem 1.25rem; }
+  .proof-stats{ grid-template-columns:1fr; gap:2rem; }
   .features{ grid-template-columns:1fr; }
   .hero__frame{ padding:2.75rem 1.25rem; }
   .btn{ --bx:1.4rem; letter-spacing:.16em; }
