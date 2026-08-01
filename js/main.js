@@ -34,26 +34,45 @@
     });
   }
 
-  /* ---- Reveal beim Scrollen ---- */
-  var revealEls = [
-    '.section-head', '.occ', '.gtile', '.location__intro',
-    '.stat', '.feature', '.kontakt__frame',
-    '.rundgang__overlay', '.wstep__title', '.fp-legend--row li'
-  ].reduce(function (acc, sel) {
-    return acc.concat(Array.prototype.slice.call(document.querySelectorAll(sel)));
-  }, []);
-
+  /* ---- Reveal beim Scrollen (gestaffelt pro Gruppe) ---- */
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    revealEls.forEach(function (el, i) {
+    var toObserve = [];
+    function mark(el, delayMs, variant) {
+      if (!el || el.classList.contains('reveal')) return;
       el.classList.add('reveal');
-      el.style.transitionDelay = (Math.min(i % 8, 6) * 45) + 'ms';
+      if (variant) el.classList.add(variant);
+      el.style.transitionDelay = Math.max(0, delayMs) + 'ms';
+      toObserve.push(el);
+    }
+    function q(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+    // Überschriften-Zeilen einzeln einschweben lassen
+    q('.section-head').forEach(function (head) {
+      Array.prototype.slice.call(head.children).forEach(function (child, i) {
+        mark(child, i * 110, 'reveal--up');
+      });
     });
+
+    // Gruppen: jede Kachel nacheinander (Stagger nach Position im Container)
+    ['.occ', '.gtile', '.feature', '.stat', '.fp-legend--row li'].forEach(function (sel) {
+      q(sel).forEach(function (el) {
+        var sibs = Array.prototype.slice.call(el.parentElement.children).filter(function (c) { return c.matches(sel); });
+        var idx = sibs.indexOf(el);
+        mark(el, idx * 90, 'reveal--up');
+      });
+    });
+
+    // Einzelblöcke
+    ['.location__intro', '.kontakt__frame', '.rundgang__overlay', '.wstep__title'].forEach(function (sel) {
+      q(sel).forEach(function (el) { mark(el, 0, 'reveal--up'); });
+    });
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+    toObserve.forEach(function (el) { io.observe(el); });
   }
 
   /* ---- Raumplan: Reveal + Hover-Verknüpfung ---- */
