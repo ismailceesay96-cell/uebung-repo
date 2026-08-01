@@ -7,6 +7,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230a0908'/%3E%3Crect x='4' y='4' width='24' height='24' rx='2' fill='none' stroke='%23c9a24b' stroke-width='1'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='15' fill='%23e8c77a' text-anchor='middle'%3EPS%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Paradise Saal — die elegante Event-Location für Hochzeiten, Firmenevents, Geburtstage, Abschlussbälle und Silvester. Ein Saal in Gold und Schwarz für unvergessliche Feste.">
 <link rel="preload" href="assets/fonts/cormorant-garamond-600-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/manrope-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/great-vibes-400-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <link rel="stylesheet" href="css/styles.css">
@@ -40,20 +41,20 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero__bg" aria-hidden="true">
-    <img src="assets/img/venue-panorama.jpg" alt="" fetchpriority="high">
+    <img class="parallax" data-speed="0.06" data-scale="1.14" src="assets/img/venue-panorama.jpg" alt="" fetchpriority="high">
   </div>
   <div class="hero__glow" aria-hidden="true"></div>
   <div class="hero__frame">
     <div class="hero__inner">
       <p class="eyebrow eyebrow--center">Event Location · seit 1998</p>
       <h1 class="hero__title">
-        <span class="hero__script">Wo Ihr</span>
-        <span class="hero__serif">schönster Moment</span>
-        <span class="hero__script hero__script--sm">beginnt</span>
+        <span class="hero__script">Manche Abende</span>
+        <span class="hero__serif">vergisst man nie</span>
+        <span class="hero__script hero__script--sm">bei uns beginnen sie</span>
       </h1>
       <p class="hero__lede">
-        Ein Saal in Gold und Schwarz — für Hochzeiten, große Feste und
-        stilvolle Abende, an die man sich ein Leben lang erinnert.
+        Warmes Licht, glänzendes Parkett und die Menschen, die man liebt.
+        Im Paradise Saal wird aus einem Fest eine Erinnerung fürs Leben.
       </p>
       <div class="hero__actions">
         <a href="#kontakt" class="btn btn--gold">Termin anfragen</a>
@@ -70,8 +71,8 @@
 <section class="anlaesse" id="anlaesse">
   <div class="section-head">
     <p class="eyebrow eyebrow--center">Ihre Anlässe</p>
-    <h2 class="section-title">Für jeden Anlass die große Bühne</h2>
-    <p class="section-sub">Von der Trauung bis zur Silvesternacht — wir richten Ihr Fest ganz nach Ihren Wünschen aus.</p>
+    <h2 class="section-title">Jeder Anlass verdient seinen großen Moment</h2>
+    <p class="section-sub">Ob das Ja-Wort, der runde Geburtstag oder die Nacht, in der das neue Jahr beginnt — wir geben Ihrem Fest den Rahmen, den es verdient.</p>
   </div>
 
   <div class="anlaesse__grid">
@@ -81,7 +82,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8.5" cy="14" r="5.2"/><circle cx="15.5" cy="14" r="5.2"/><path d="M6.4 8.6 8.5 5l2.1 3.6M13.4 8.6 15.5 5l2.1 3.6"/></svg>
       </span>
       <h3 class="occ__title">Hochzeiten</h3>
-      <p class="occ__text">Freie Trauung, Bankett und Tanz bis in die Nacht — der ganze Tag an einem Ort.</p>
+      <p class="occ__text">Vom ersten Blick bis zum letzten Tanz. Ihr schönster Tag, an einem einzigen Ort — getragen von Menschen, die jedes Detail lieben.</p>
     </article>
     <!-- Abschlussbälle -->
     <article class="occ">
@@ -89,7 +90,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4Z"/><path d="M6.5 10.5V15c0 1.4 2.5 2.5 5.5 2.5s5.5-1.1 5.5-2.5v-4.5"/><path d="M21.5 8.5V14"/></svg>
       </span>
       <h3 class="occ__title">Abschlussbälle</h3>
-      <p class="occ__text">Der große Auftritt zum Abschluss — Bühne, Licht und Platz für den ganzen Jahrgang.</p>
+      <p class="occ__text">Der Abend, von dem der ganze Jahrgang noch Jahre später erzählt. Große Bühne, großes Licht, ein Auftritt für jeden.</p>
     </article>
     <!-- Firmenevents -->
     <article class="occ">
@@ -97,7 +98,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="8" width="18" height="12" rx="1.5"/><path d="M8.5 8V6.2A2.2 2.2 0 0 1 10.7 4h2.6a2.2 2.2 0 0 1 2.2 2.2V8"/><path d="M3 13h18"/></svg>
       </span>
       <h3 class="occ__title">Firmenevents</h3>
-      <p class="occ__text">Galadinner, Jubiläum oder Weihnachtsfeier — repräsentativ und mit Technik ausgestattet.</p>
+      <p class="occ__text">Wenn aus Kollegen ein Team wird. Galadinner, Jubiläum oder Weihnachtsfeier — repräsentativ inszeniert, bis ins letzte Detail durchdacht.</p>
     </article>
     <!-- Geburtstage -->
     <article class="occ">
@@ -105,7 +106,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20h16v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6Z"/><path d="M4 16h16"/><path d="M8 12V9m4 3V9m4 3V9"/><path d="M8 6.5c0 .8-.8 1.3-.8 1.3S6.4 7.3 6.4 6.5 8 5 8 5s0 .7 0 1.5Z" transform="translate(0.5 0)"/></svg>
       </span>
       <h3 class="occ__title">Geburtstage</h3>
-      <p class="occ__text">Vom runden Jubeltag bis zur Sweet Sixteen — festlich gedeckt und persönlich dekoriert.</p>
+      <p class="occ__text">Ein Leben, das gefeiert werden will. Vom runden Jubeltag bis zur Sweet Sixteen — festlich gedeckt, ganz nach Ihrer Handschrift.</p>
     </article>
     <!-- Silvester -->
     <article class="occ">
@@ -113,7 +114,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="2.4"/></svg>
       </span>
       <h3 class="occ__title">Silvester</h3>
-      <p class="occ__text">Ins neue Jahr feiern mit Menü, Musik und Blick auf das Feuerwerk um Mitternacht.</p>
+      <p class="occ__text">Die letzten Minuten des Jahres, die schönsten. Menü, Musik und um Mitternacht der Himmel voller Feuerwerk.</p>
     </article>
     <!-- Taufe & Kommunion -->
     <article class="occ">
@@ -121,7 +122,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21c4-2.5 6.5-5.8 6.5-9.2A6.5 6.5 0 0 0 12 5a6.5 6.5 0 0 0-6.5 6.8C5.5 15.2 8 18.5 12 21Z"/><path d="M12 12.5V8m-2 2h4"/></svg>
       </span>
       <h3 class="occ__title">Taufe & Kommunion</h3>
-      <p class="occ__text">Familienfeiern in feierlichem Rahmen — herzlich, ruhig und stilvoll.</p>
+      <p class="occ__text">Die leisen, kostbaren Feste. Für die ganze Familie — herzlich, würdevoll und mit Raum für die schönen Momente.</p>
     </article>
     <!-- Jubiläen -->
     <article class="occ">
@@ -129,7 +130,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9.5" r="5.5"/><path d="M9 14.5 7.5 21l4.5-2.6L16.5 21 15 14.5"/><path d="M12 7v2.5l1.6 1"/></svg>
       </span>
       <h3 class="occ__title">Jubiläen</h3>
-      <p class="occ__text">Goldene Hochzeit oder Firmenjubiläum — würdiger Rahmen für große Zahlen.</p>
+      <p class="occ__text">Große Zahlen, große Gefühle. Goldene Hochzeit oder Firmenjubiläum — ein Abend, der einem ganzen Kapitel gerecht wird.</p>
     </article>
     <!-- Gala & Bälle -->
     <article class="occ">
@@ -137,7 +138,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 4h10l-1 5.5a4 4 0 0 1-8 0L7 4Z"/><path d="M12 15v4m-3.5 1h7"/><path d="M9 7h6"/></svg>
       </span>
       <h3 class="occ__title">Gala & Bälle</h3>
-      <p class="occ__text">Wohltätigkeitsgala, Ballnacht oder Empfang — auf großem Parkett.</p>
+      <p class="occ__text">Roben, Rampenlicht, ein glänzendes Parkett. Für Galanächte und Empfänge, die in Erinnerung bleiben.</p>
     </article>
   </div>
 </section>
@@ -146,8 +147,8 @@
 <section class="galerie" id="galerie">
   <div class="section-head">
     <p class="eyebrow eyebrow--center">Impressionen</p>
-    <h2 class="section-title">Galerie</h2>
-    <p class="section-sub">Ein Blick in unsere Räume — festlich eingedeckt, in warmem Licht.</p>
+    <h2 class="section-title">Momente, die für sich sprechen</h2>
+    <p class="section-sub">Ein Blick genügt, um die Stimmung zu spüren — warmes Licht, feine Tische, ein Saal, der auf seinen großen Abend wartet.</p>
   </div>
 
   <div class="gallery-grid" id="galleryGrid">
@@ -162,6 +163,27 @@
     <figure class="gtile gtile--wide"><img class="pos-bottom" src="assets/img/venue-panorama.jpg" alt="Loungebereich mit Blick ins Grüne" loading="lazy"></figure>
     <figure class="gtile"><img class="pos-detail" src="assets/img/venue-tische.jpg" alt="Detail der Tischdekoration mit Serviette und Tischleuchte" loading="lazy"></figure>
     <figure class="gtile"><img class="pos-detail" src="assets/img/venue-catering.jpg" alt="Frische Häppchen und Fruchtplatte im Detail" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- ============ STORY (asymmetrisch, Parallax) ============ -->
+<section class="story" id="story">
+  <figure class="story__media">
+    <img class="parallax" data-speed="0.14" src="assets/img/venue-tische.jpg" alt="Gedeckte Tafel mit dunklen Samtsesseln im Abendlicht" loading="lazy">
+  </figure>
+  <div class="story__text">
+    <p class="eyebrow">Unsere Handschrift</p>
+    <h2 class="section-title section-title--left">Kein Abend<br>gleicht dem anderen</h2>
+    <p>
+      Wir glauben nicht an Standard. Jede Feier trägt eine eigene Geschichte —
+      und die erzählen wir mit Ihnen: von der Farbe der Servietten bis zum
+      Moment, in dem das Licht gedimmt wird und die erste Musik einsetzt.
+    </p>
+    <p>
+      Was bleibt, sind keine Details. Was bleibt, ist das Gefühl, einen
+      unvergesslichen Abend erlebt zu haben.
+    </p>
+    <p class="story__sig"><span class="story__sig-script">Ihr Paradise&nbsp;Saal</span></p>
   </div>
 </section>
 
@@ -185,11 +207,12 @@
   <div class="location__grid">
     <div class="location__intro">
       <p class="eyebrow">Die Location</p>
-      <h2 class="section-title section-title--left">Ein Haus, das jeden Anlass trägt</h2>
+      <h2 class="section-title section-title--left">Ein Haus, das große Gefühle trägt</h2>
       <p class="location__text">
-        Hohe Decken, warmes Licht und ein Parkett, das zum Tanzen einlädt.
-        Unser Team plant mit Ihnen von der ersten Anfrage bis zum letzten Tanz —
-        Küche, Technik und Service aus einer Hand.
+        Hohe Decken, warmes Licht, ein Parkett, das zum Tanzen einlädt. Doch was
+        einen Abend wirklich trägt, sind die Menschen dahinter: Wir planen mit
+        Ihnen von der ersten Idee bis zum letzten Tanz — Küche, Technik und
+        Service aus einer Hand, damit Sie nur eines tun müssen: genießen.
       </p>
       <a href="#kontakt" class="btn btn--gold">Unverbindlich anfragen</a>
     </div>
@@ -343,8 +366,8 @@
   <div class="kontakt__frame">
     <div class="section-head">
       <p class="eyebrow eyebrow--center">Angebot</p>
-      <h2 class="section-title">Angebot anfordern</h2>
-      <p class="section-sub">In drei Schritten zu Ihrem persönlichen Angebot — wir treten anschließend mit Ihnen in Kontakt.</p>
+      <h2 class="section-title">Erzählen Sie uns von Ihrem Fest</h2>
+      <p class="section-sub">Drei kurze Schritte — und wir melden uns persönlich mit einem Vorschlag, der zu Ihrem Moment passt.</p>
     </div>
 
     <!-- Fortschritt -->

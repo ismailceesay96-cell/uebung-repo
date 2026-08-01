@@ -22,7 +22,7 @@
   /* Typo */
   --serif: 'Cormorant Garamond', Georgia, serif;
   --script:'Great Vibes', cursive;
-  --sans:  'Jost', system-ui, sans-serif;
+  --sans:  'Manrope', system-ui, -apple-system, sans-serif;
 
   /* Raster */
   --maxw: 1200px;
@@ -39,8 +39,9 @@ body{
   background:var(--noir);
   color:var(--ink);
   font-family:var(--sans);
-  font-weight:300;
-  line-height:1.6;
+  font-weight:400;
+  line-height:1.7;
+  letter-spacing:.005em;
   -webkit-font-smoothing:antialiased;
   /* KEIN overflow-x auf body/html — das würde position:sticky brechen.
      Horizontalen Überlauf klippen wir gezielt an den Deko-Sektionen. */
@@ -241,38 +242,39 @@ a{ color:inherit; text-decoration:none; }
 /* ============================================================
    ANLÄSSE
    ============================================================ */
-.anlaesse{ padding:clamp(4.5rem,10vw,8rem) 0; background:var(--noir); position:relative; }
+.anlaesse{ padding:clamp(6rem,12vw,11rem) 0; background:var(--noir); position:relative; }
 .anlaesse__grid{
   max-width:var(--maxw); margin:0 auto; padding-inline:var(--pad);
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-  background:var(--line-soft); border:1px solid var(--line-soft);
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:clamp(2rem,4vw,3.5rem) clamp(1.75rem,3vw,3rem);
 }
 .occ{
-  background:var(--noir); padding:2.4rem 1.6rem;
-  transition:background .4s ease, transform .4s ease;
-  position:relative;
+  position:relative; padding:.4rem .2rem 1.4rem;
+  transition:transform .5s cubic-bezier(.16,.8,.24,1);
 }
-.occ:hover{ background:var(--noir-3); }
+.occ:hover{ transform:translateY(-6px); }
 .occ__icon{
-  display:inline-flex; width:52px; height:52px; margin-bottom:1.3rem;
-  color:var(--gold-bright);
+  display:inline-flex; width:44px; height:44px; margin-bottom:1.4rem;
+  color:var(--gold); transition:color .4s ease, transform .5s cubic-bezier(.16,.8,.24,1);
 }
+.occ:hover .occ__icon{ color:var(--gold-bright); transform:translateY(-2px); }
 .occ__icon svg{ width:100%; height:100%; }
 .occ__title{
-  font-family:var(--serif); font-weight:600; font-size:1.55rem;
-  color:var(--champagne); margin:0 0 .5rem;
+  font-family:var(--serif); font-weight:600; font-size:1.7rem;
+  color:var(--champagne); margin:0 0 .6rem; letter-spacing:.005em;
 }
-.occ__text{ color:var(--ink-dim); font-size:.94rem; margin:0; }
+.occ__text{ color:var(--ink-dim); font-size:.96rem; line-height:1.65; margin:0; max-width:34ch; }
 .occ::after{
-  content:""; position:absolute; left:1.6rem; bottom:0; height:2px; width:0;
-  background:linear-gradient(90deg,var(--gold),transparent); transition:width .4s ease;
+  content:""; position:absolute; left:.2rem; bottom:0; height:1px; width:24px;
+  background:linear-gradient(90deg,var(--gold),transparent); transition:width .5s ease, opacity .5s ease;
+  opacity:.4;
 }
-.occ:hover::after{ width:44px; }
+.occ:hover::after{ width:64px; opacity:1; }
 
 /* ============================================================
    GALERIE
    ============================================================ */
-.galerie{ padding:clamp(4.5rem,10vw,8rem) 0; background:linear-gradient(180deg,var(--noir),var(--noir-2)); }
+.galerie{ padding:clamp(6rem,12vw,11rem) 0; background:linear-gradient(180deg,var(--noir),var(--noir-2)); }
 .gallery-grid{
   max-width:1320px; margin:0 auto; padding-inline:var(--pad);
   display:grid; grid-template-columns:repeat(4,1fr);
@@ -280,8 +282,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .gtile{
   margin:0; overflow:hidden; border-radius:var(--r);
-  border:1px solid var(--line-soft); position:relative;
-  background:var(--noir-3);
+  border:0; position:relative; background:var(--noir-3);
 }
 .gtile--tall{ grid-row:span 2; }
 .gtile--wide{ grid-column:span 2; }
@@ -303,6 +304,27 @@ a{ color:inherit; text-decoration:none; }
 .gtile img.pos-detail{ object-position:50% 62%; transform:scale(1.35); }
 .gtile img.pos-detail{ transition:transform .8s cubic-bezier(.2,.7,.2,1); }
 .gtile:hover img.pos-detail{ transform:scale(1.45); }
+
+/* ============================================================
+   STORY (asymmetrisch, Parallax)
+   ============================================================ */
+.story{
+  max-width:var(--maxw); margin:0 auto;
+  padding:clamp(3rem,8vw,7rem) var(--pad);
+  display:grid; grid-template-columns:1.05fr .95fr;
+  gap:clamp(2.5rem,6vw,6rem); align-items:center;
+}
+.story__media{
+  margin:0; overflow:hidden; border-radius:var(--r);
+  aspect-ratio:4/5; position:relative;
+}
+.story__media img{
+  width:100%; height:128%; object-fit:cover; position:absolute; inset:0;
+  filter:saturate(.95) brightness(.95); will-change:transform;
+}
+.story__text p{ color:var(--ink-dim); font-size:1.08rem; line-height:1.8; max-width:46ch; margin:0 0 1.3rem; }
+.story__sig{ margin-top:1.8rem !important; }
+.story__sig-script{ font-family:var(--script); color:var(--gold-bright); font-size:2.4rem; line-height:1; }
 
 /* ============================================================
    RUNDGANG (Scroll-Video)
@@ -337,7 +359,7 @@ a{ color:inherit; text-decoration:none; }
 /* ============================================================
    LOCATION
    ============================================================ */
-.location{ padding:clamp(4.5rem,10vw,8rem) var(--pad); background:var(--noir-2); }
+.location{ padding:clamp(6rem,12vw,11rem) var(--pad); background:var(--noir-2); }
 .location__grid{
   max-width:var(--maxw); margin:0 auto;
   display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(2.5rem,6vw,5rem);
@@ -346,29 +368,28 @@ a{ color:inherit; text-decoration:none; }
 .location__text{ color:var(--ink-dim); font-size:1.08rem; max-width:46ch; margin:0 0 2rem; }
 .stats{
   list-style:none; margin:0; padding:0;
-  display:grid; grid-template-columns:1fr 1fr; gap:1px;
-  background:var(--line-soft); border:1px solid var(--line-soft);
+  display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,4vw,3rem) 2rem;
 }
-.stat{ background:var(--noir); padding:2rem 1.4rem; text-align:center; }
+.stat{ text-align:left; }
 .stat__num{
   display:block; font-family:var(--serif); font-weight:600;
-  font-size:clamp(2.6rem,6vw,3.6rem); color:var(--gold-bright); line-height:1;
+  font-size:clamp(3rem,7vw,4.4rem); color:var(--gold-bright); line-height:.95;
+  font-variant-numeric:tabular-nums;
 }
-.stat__label{ display:block; margin-top:.5rem; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-dim); }
+.stat__label{ display:block; margin-top:.6rem; font-size:.74rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-dim); }
 
 .features{
-  max-width:var(--maxw); margin:clamp(3rem,6vw,5rem) auto 0;
+  max-width:var(--maxw); margin:clamp(4rem,8vw,7rem) auto 0;
   list-style:none; padding:0;
-  display:grid; grid-template-columns:repeat(4,1fr); gap:2rem;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(2rem,4vw,3.5rem);
 }
-.feature{ border-top:1px solid var(--line); padding-top:1.2rem; }
-.feature h3{ font-family:var(--serif); font-weight:600; font-size:1.3rem; color:var(--champagne); margin:0 0 .4rem; }
-.feature p{ color:var(--ink-dim); font-size:.92rem; margin:0; }
+.feature h3{ font-family:var(--serif); font-weight:600; font-size:1.45rem; color:var(--champagne); margin:0 0 .5rem; }
+.feature p{ color:var(--ink-dim); font-size:.94rem; line-height:1.65; margin:0; }
 
 /* ============================================================
    RAUMPLAN / GRUNDRISS
    ============================================================ */
-.floorplan{ padding:clamp(4.5rem,10vw,8rem) var(--pad); background:linear-gradient(180deg,var(--noir-2),var(--noir)); }
+.floorplan{ padding:clamp(6rem,12vw,11rem) var(--pad); background:linear-gradient(180deg,var(--noir-2),var(--noir)); }
 
 /* ---- 3D-Szene: erst alles von oben, dann Drehung beim Wegscrollen ---- */
 .fp3d{ position:relative; height:230vh; }              /* Scroll-Strecke */
@@ -517,7 +538,7 @@ a{ color:inherit; text-decoration:none; }
 /* ============================================================
    KONTAKT
    ============================================================ */
-.kontakt{ padding:clamp(4.5rem,10vw,8rem) var(--pad); background:
+.kontakt{ padding:clamp(6rem,12vw,11rem) var(--pad); background:
   radial-gradient(90% 70% at 50% 0%, rgba(138,61,74,.14), transparent 60%), var(--noir); }
 .kontakt__frame{
   max-width:820px; margin:0 auto;
@@ -728,6 +749,8 @@ a{ color:inherit; text-decoration:none; }
   .anlaesse__grid{ grid-template-columns:repeat(2,1fr); }
   .features{ grid-template-columns:repeat(2,1fr); }
   .location__grid{ grid-template-columns:1fr; }
+  .story{ grid-template-columns:1fr; }
+  .story__media{ aspect-ratio:16/10; }
 }
 @media (max-width:760px){
   .nav__links{ display:none; }

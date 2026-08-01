@@ -75,6 +75,32 @@
     toObserve.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---- Parallax (sanft, Premium) ---- */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var els = Array.prototype.slice.call(document.querySelectorAll('.parallax'));
+    if (!els.length) return;
+    var vh = window.innerHeight;
+    var ticking = false;
+    function update() {
+      els.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.bottom < -120 || r.top > vh + 120) return;
+        var speed = parseFloat(el.getAttribute('data-speed')) || 0.1;
+        var scale = el.getAttribute('data-scale');
+        var delta = (r.top + r.height / 2) - vh / 2;
+        var y = (-delta * speed).toFixed(1);
+        el.style.transform = 'translate3d(0,' + y + 'px,0)' + (scale ? ' scale(' + scale + ')' : '');
+      });
+    }
+    window.addEventListener('scroll', function () {
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function () { update(); ticking = false; });
+    }, { passive: true });
+    window.addEventListener('resize', function () { vh = window.innerHeight; update(); });
+    update();
+  })();
+
   /* ---- Raumplan: Reveal + Hover-Verknüpfung ---- */
   var fp = document.getElementById('fp');
   if (fp) {
