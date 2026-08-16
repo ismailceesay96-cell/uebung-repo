@@ -322,7 +322,7 @@
       <div class="saal3d" id="saal3d">
         <div class="saal3d__scene">
           <div class="saal3d__floor" id="fp">
-            <svg class="fp-svg" viewBox="0 0 900 600" role="img" aria-label="Grundriss des Saals mit Bühne, Tanzfläche, Sitzplätzen, Bar, Lounge, Empfang und Hof">
+            <svg class="fp-svg" viewBox="0 0 900 600" role="img" aria-label="Grundriss des Saals mit Bühne, Buffet, Tanzfläche, Sitzplätzen, Bar, Lounge, Empfang und Hof">
               <!-- Umriss: achteckiger Saal -->
               <polygon class="fp-wall" points="118,118 562,118 616,172 616,482 562,536 118,536 64,482 64,172"/>
               <!-- Hof-Terrasse (Freifläche rechts) -->
@@ -336,6 +336,16 @@
                 <path class="fp-glow" d="M262 118 a78 78 0 0 1 156 0 z"/>
                 <path class="fp-line" d="M282 110 a58 58 0 0 1 116 0" fill="none"/>
                 <text class="fp-label" x="340" y="86">BÜHNE</text>
+              </g>
+
+              <!-- Buffet (Theke oben rechts, neben der Bühne) -->
+              <g class="zone" data-zone="buffet" role="button" tabindex="0" aria-label="Buffet — Bild öffnen">
+                <rect class="fp-fill fp-buffet" x="452" y="150" width="120" height="30" rx="11"/>
+                <circle class="fp-stool" cx="476" cy="165" r="5"/>
+                <circle class="fp-stool" cx="500" cy="165" r="5"/>
+                <circle class="fp-stool" cx="524" cy="165" r="5"/>
+                <circle class="fp-stool" cx="548" cy="165" r="5"/>
+                <text class="fp-label" x="512" y="140">BUFFET</text>
               </g>
 
               <!-- Tanzfläche (rund) -->
@@ -425,6 +435,7 @@
     <li data-zone="lounge"><span class="fp-legend__no">05</span><span><strong>Lounge</strong>Sitzecke zum Verweilen</span></li>
     <li data-zone="hof"><span class="fp-legend__no">06</span><span><strong>Hof · Terrasse</strong>Freiluftbereich</span></li>
     <li data-zone="empfang"><span class="fp-legend__no">07</span><span><strong>Empfang</strong>Eingang &amp; Garderobe</span></li>
+    <li data-zone="buffet"><span class="fp-legend__no">08</span><span><strong>Buffet</strong>Speisen &amp; Catering</span></li>
   </ul>
 
   <!-- Bild-Popup je Bereich -->

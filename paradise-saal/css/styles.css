@@ -526,6 +526,7 @@ a{ color:inherit; text-decoration:none; }
 .seat{ fill:none; stroke:var(--gold); stroke-opacity:.35; stroke-width:1; stroke-dasharray:3 4; }
 .tbl{ fill:rgba(201,162,75,.14); stroke:var(--gold); stroke-opacity:.5; stroke-width:1; }
 .fp-bar{ fill:rgba(201,162,75,.1); }
+.fp-buffet{ fill:rgba(232,199,122,.13); }
 .fp-stool{ fill:var(--gold); opacity:.5; }
 .fp-sofa{ fill:rgba(201,162,75,.1); }
 .fp-open{ fill:#080706; stroke:var(--gold-bright); stroke-width:2; }

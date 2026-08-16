@@ -198,7 +198,8 @@
       bar:     { img: 'assets/img/venue-catering.jpg', cap: 'Bar' },
       lounge:  { img: 'assets/img/venue-tische.jpg',   cap: 'Lounge' },
       hof:     { img: 'assets/img/venue-panorama.jpg', cap: 'Hof · Terrasse' },
-      empfang: { img: 'assets/img/venue-buffet.jpg',   cap: 'Empfang' }
+      empfang: { img: 'assets/img/venue-buffet.jpg',   cap: 'Empfang' },
+      buffet:  { img: 'assets/img/venue-buffet.jpg',   cap: 'Buffet' }
     };
     var modal = document.getElementById('fpModal');
     var modalImg = document.getElementById('fpModalImg');
