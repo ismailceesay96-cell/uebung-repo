@@ -197,7 +197,7 @@
       tische:  { img: 'assets/img/zone-tische.jpg',   cap: 'Sitzplätze' },
       bar:     { img: 'assets/img/zone-bar.jpg', cap: 'Bar' },
       lounge:  { img: 'assets/img/zone-lounge.jpg',   cap: 'Lounge' },
-      hof:     { img: 'assets/img/venue-panorama.jpg', cap: 'Hof · Terrasse' },
+      hof:     { img: 'assets/img/zone-hof.jpg', cap: 'Hof · Terrasse' },
       empfang: { img: 'assets/img/zone-empfang.jpg',   cap: 'Empfang' },
       buffet:  { imgs: ['assets/img/zone-buffet-1.jpg', 'assets/img/zone-buffet-2.jpg', 'assets/img/zone-buffet-3.jpg'], cap: 'Buffet' }
     };
