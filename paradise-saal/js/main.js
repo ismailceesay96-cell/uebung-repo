@@ -194,7 +194,7 @@
     var zoneImages = {
       buehne:  { img: 'assets/img/zone-buehne.jpg', cap: 'Bühne' },
       tanz:    { img: 'assets/img/venue-panorama.jpg', cap: 'Tanzfläche' },
-      tische:  { img: 'assets/img/venue-tische.jpg',   cap: 'Sitzplätze' },
+      tische:  { img: 'assets/img/zone-tische.jpg',   cap: 'Sitzplätze' },
       bar:     { img: 'assets/img/venue-catering.jpg', cap: 'Bar' },
       lounge:  { img: 'assets/img/venue-tische.jpg',   cap: 'Lounge' },
       hof:     { img: 'assets/img/venue-panorama.jpg', cap: 'Hof · Terrasse' },
