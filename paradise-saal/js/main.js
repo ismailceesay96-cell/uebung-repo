@@ -193,9 +193,9 @@
     /* Bild-Popup je Bereich (Platzhalter-Bilder — später ersetzen) */
     var zoneImages = {
       buehne:  { img: 'assets/img/zone-buehne.jpg', cap: 'Bühne' },
-      tanz:    { img: 'assets/img/venue-panorama.jpg', cap: 'Tanzfläche' },
+      tanz:    { img: 'assets/img/zone-tanz.jpg', cap: 'Tanzfläche' },
       tische:  { img: 'assets/img/zone-tische.jpg',   cap: 'Sitzplätze' },
-      bar:     { img: 'assets/img/venue-catering.jpg', cap: 'Bar' },
+      bar:     { img: 'assets/img/zone-bar.jpg', cap: 'Bar' },
       lounge:  { img: 'assets/img/venue-tische.jpg',   cap: 'Lounge' },
       hof:     { img: 'assets/img/venue-panorama.jpg', cap: 'Hof · Terrasse' },
       empfang: { img: 'assets/img/zone-empfang.jpg',   cap: 'Empfang' },
