@@ -443,8 +443,13 @@
     <div class="fp-modal__backdrop" data-close></div>
     <figure class="fp-modal__fig" role="dialog" aria-modal="true" aria-labelledby="fpModalCap">
       <button class="fp-modal__close" data-close aria-label="Schließen">&times;</button>
-      <img id="fpModalImg" alt="">
+      <div class="fp-modal__stage">
+        <img id="fpModalImg" alt="">
+        <button class="fp-modal__nav fp-modal__nav--prev" id="fpPrev" type="button" aria-label="Vorheriges Bild" hidden>&#8249;</button>
+        <button class="fp-modal__nav fp-modal__nav--next" id="fpNext" type="button" aria-label="Nächstes Bild" hidden>&#8250;</button>
+      </div>
       <figcaption id="fpModalCap"></figcaption>
+      <div class="fp-modal__dots" id="fpDots" hidden></div>
     </figure>
   </div>
 </section>
