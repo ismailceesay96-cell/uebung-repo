@@ -192,14 +192,14 @@
 
     /* Bild-Popup je Bereich (Platzhalter-Bilder — später ersetzen) */
     var zoneImages = {
-      buehne:  { img: 'assets/img/zone-buehne.jpg', cap: 'Bühne', sub: 'Wo der große Auftritt beginnt.' },
-      tanz:    { img: 'assets/img/zone-tanz.jpg', cap: 'Tanzfläche', sub: 'Der erste Tanz, unvergessen.' },
-      tische:  { img: 'assets/img/zone-tische.jpg',   cap: 'Sitzplätze', sub: 'Festlich gedeckt für Ihre Gäste.' },
-      bar:     { img: 'assets/img/zone-bar.jpg', cap: 'Bar', sub: 'Ein Ort für die schönen Stunden der Nacht.' },
-      lounge:  { img: 'assets/img/zone-lounge.jpg',   cap: 'Lounge', sub: 'Zum Verweilen und Genießen.' },
-      hof:     { img: 'assets/img/zone-hof.jpg', cap: 'Hof · Terrasse', sub: 'Feiern unter freiem Himmel.' },
-      empfang: { img: 'assets/img/zone-empfang.jpg',   cap: 'Empfang', sub: 'Der erste Eindruck, der bleibt.' },
-      buffet:  { imgs: ['assets/img/zone-buffet-1.jpg', 'assets/img/zone-buffet-2.jpg', 'assets/img/zone-buffet-3.jpg'], cap: 'Buffet', sub: 'Kulinarische Genüsse für jeden Anlass.' }
+      buehne:  { img: 'assets/img/zone-buehne.jpg', cap: 'Bühne', sub: 'Wo Musik erklingt und Gänsehaut-Momente entstehen.' },
+      tanz:    { img: 'assets/img/zone-tanz.jpg', cap: 'Tanzfläche', sub: 'Tanzen, lachen, feiern – bis tief in die Nacht.' },
+      tische:  { img: 'assets/img/zone-tische.jpg',   cap: 'Sitzplätze', sub: 'Festlich gedeckt, wo Freude und Menschen zusammenkommen.' },
+      bar:     { img: 'assets/img/zone-bar.jpg', cap: 'Bar', sub: 'Gläser klingen, Gespräche fließen, die Nacht erwacht.' },
+      lounge:  { img: 'assets/img/zone-lounge.jpg',   cap: 'Lounge', sub: 'Zum Verweilen, Genießen und Entspannen.' },
+      hof:     { img: 'assets/img/zone-hof.jpg', cap: 'Hof · Terrasse', sub: 'Laue Abende und Feiern unter freiem Himmel.' },
+      empfang: { img: 'assets/img/zone-empfang.jpg',   cap: 'Empfang', sub: 'Herzlich willkommen – der erste Eindruck, der bleibt.' },
+      buffet:  { imgs: ['assets/img/zone-buffet-1.jpg', 'assets/img/zone-buffet-2.jpg', 'assets/img/zone-buffet-3.jpg'], cap: 'Buffet', sub: 'Verführerische Genüsse, die alle Sinne verwöhnen.' }
     };
     var modal = document.getElementById('fpModal');
     var modalImg = document.getElementById('fpModalImg');
