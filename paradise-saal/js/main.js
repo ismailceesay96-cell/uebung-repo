@@ -192,18 +192,20 @@
 
     /* Bild-Popup je Bereich (Platzhalter-Bilder — später ersetzen) */
     var zoneImages = {
-      buehne:  { img: 'assets/img/zone-buehne.jpg', cap: 'Bühne' },
-      tanz:    { img: 'assets/img/zone-tanz.jpg', cap: 'Tanzfläche' },
-      tische:  { img: 'assets/img/zone-tische.jpg',   cap: 'Sitzplätze' },
-      bar:     { img: 'assets/img/zone-bar.jpg', cap: 'Bar' },
-      lounge:  { img: 'assets/img/zone-lounge.jpg',   cap: 'Lounge' },
-      hof:     { img: 'assets/img/zone-hof.jpg', cap: 'Hof · Terrasse' },
-      empfang: { img: 'assets/img/zone-empfang.jpg',   cap: 'Empfang' },
-      buffet:  { imgs: ['assets/img/zone-buffet-1.jpg', 'assets/img/zone-buffet-2.jpg', 'assets/img/zone-buffet-3.jpg'], cap: 'Buffet' }
+      buehne:  { img: 'assets/img/zone-buehne.jpg', cap: 'Bühne', sub: 'Wo der große Auftritt beginnt.' },
+      tanz:    { img: 'assets/img/zone-tanz.jpg', cap: 'Tanzfläche', sub: 'Der erste Tanz, unvergessen.' },
+      tische:  { img: 'assets/img/zone-tische.jpg',   cap: 'Sitzplätze', sub: 'Festlich gedeckt für Ihre Gäste.' },
+      bar:     { img: 'assets/img/zone-bar.jpg', cap: 'Bar', sub: 'Ein Ort für die schönen Stunden der Nacht.' },
+      lounge:  { img: 'assets/img/zone-lounge.jpg',   cap: 'Lounge', sub: 'Zum Verweilen und Genießen.' },
+      hof:     { img: 'assets/img/zone-hof.jpg', cap: 'Hof · Terrasse', sub: 'Feiern unter freiem Himmel.' },
+      empfang: { img: 'assets/img/zone-empfang.jpg',   cap: 'Empfang', sub: 'Der erste Eindruck, der bleibt.' },
+      buffet:  { imgs: ['assets/img/zone-buffet-1.jpg', 'assets/img/zone-buffet-2.jpg', 'assets/img/zone-buffet-3.jpg'], cap: 'Buffet', sub: 'Kulinarische Genüsse für jeden Anlass.' }
     };
     var modal = document.getElementById('fpModal');
     var modalImg = document.getElementById('fpModalImg');
     var modalCap = document.getElementById('fpModalCap');
+    var modalTitle = document.getElementById('fpModalTitle');
+    var modalSub = document.getElementById('fpModalSub');
     var btnPrev = document.getElementById('fpPrev');
     var btnNext = document.getElementById('fpNext');
     var dotsWrap = document.getElementById('fpDots');
@@ -224,7 +226,9 @@
       var override = window.__ZONE_IMAGES__ && window.__ZONE_IMAGES__[name];
       gallery = override ? [].concat(override) : (z.imgs ? z.imgs.slice() : [z.img]);
       gCap = z.cap; gIndex = 0;
-      modalCap.textContent = z.cap;
+      if (modalTitle) modalTitle.textContent = z.cap;
+      else modalCap.textContent = z.cap;
+      if (modalSub) modalSub.textContent = z.sub || '';
       var multi = gallery.length > 1;
       if (dotsWrap) {
         dotsWrap.innerHTML = '';

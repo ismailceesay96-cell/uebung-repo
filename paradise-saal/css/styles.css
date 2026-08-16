@@ -588,9 +588,17 @@ a{ color:inherit; text-decoration:none; }
 }
 .fp-modal__fig img{ width:100%; max-height:70vh; object-fit:cover; display:block; }
 .fp-modal__fig figcaption{
-  padding:1rem 1.4rem; font-family:var(--serif); font-size:1.3rem; color:var(--champagne);
-  border-top:1px solid var(--line-soft);
+  padding:1rem 1.4rem; border-top:1px solid var(--line-soft);
 }
+.fp-modal__title{
+  display:block; font-family:var(--serif); font-size:1.3rem; color:var(--champagne); line-height:1.2;
+}
+.fp-modal__sub{
+  display:block; margin-top:.3rem; font-family:var(--sans, inherit);
+  font-size:.92rem; font-style:italic; letter-spacing:.01em;
+  color:var(--muted, rgba(232,225,210,.68));
+}
+.fp-modal__sub:empty{ display:none; }
 .fp-modal__close{
   position:absolute; top:.6rem; right:.6rem; z-index:2;
   width:40px; height:40px; border-radius:50%; cursor:pointer;
