@@ -1,11 +1,11 @@
 {
-  "note": "Bilder fuer den Saal-Rundgang. Bei wenigen Bildern (< 20) blendet der Player cinematisch mit Zoom ueber (Cross-Fade). Fuer einen echten 'Video'-Walk lege viele Frames aus einem kurzen Video ab (siehe README) - ab 20 Frames schaltet der Player automatisch in den fluessigen Frame-Modus.",
+  "note": "Bilder fuer den Saal-Rundgang. Bei wenigen Bildern (< 20) blendet der Player cinematisch mit Zoom ueber (Cross-Fade). Reihenfolge = Ablauf des Rundgangs: Hof, Einlass, Tanzflaeche, Sitze, Bar. Beschriftungen dazu in js/walkthrough.js (STEP_LABELS).",
   "basePath": "assets/img/",
   "frames": [
-    "venue-panorama.jpg",
-    "venue-ballsaal.jpg",
-    "venue-tische.jpg",
-    "venue-catering.jpg",
-    "venue-torte.jpg"
+    "zone-hof.jpg",
+    "zone-empfang.jpg",
+    "zone-tanz.jpg",
+    "gallery-panorama-lounge.jpg",
+    "zone-bar.jpg"
   ]
 }

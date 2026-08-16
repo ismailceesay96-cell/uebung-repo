@@ -416,6 +416,17 @@ a{ color:inherit; text-decoration:none; }
 }
 .rundgang__title em{ font-style:italic; color:var(--gold-bright); }
 .rundgang__hint{ color:var(--ink-dim); font-size:.95rem; margin:0; }
+.rundgang__step{
+  display:inline-flex; align-items:center; gap:.7rem; margin:1.4rem 0 0;
+  padding:.5rem 1.2rem; border:1px solid rgba(232,199,122,.4); border-radius:999px;
+  background:rgba(6,5,4,.35); backdrop-filter:blur(3px);
+}
+.rundgang__step-no{
+  font-size:.72rem; letter-spacing:.14em; color:var(--gold-bright); font-variant-numeric:tabular-nums;
+}
+.rundgang__step-name{
+  font-family:var(--serif); font-size:1.15rem; color:var(--champagne); letter-spacing:.02em;
+}
 .rundgang__progress{
   position:absolute; left:var(--pad); right:var(--pad); bottom:34px; z-index:2;
   height:1px; background:var(--line-soft);
