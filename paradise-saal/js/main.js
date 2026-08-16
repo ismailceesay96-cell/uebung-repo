@@ -243,8 +243,9 @@
         var scrollable = r.height - vh;
         var through = scrollable > 0 ? (-r.top) / scrollable : 0;   // 0..1 durch die Sektion
         through = Math.max(0, Math.min(1, through));
-        // flach bleiben bis 55 %, dann in der letzten Phase drehen
-        var p = Math.max(0, Math.min(1, (through - 0.55) / 0.4));
+        // Drehung startet direkt beim ersten Scrollen und richtet sich
+        // ueber den Grossteil der Sektion auf; danach kurzer Halt (voll gedreht)
+        var p = Math.max(0, Math.min(1, through / 0.8));
         saal.style.setProperty('--p', p.toFixed(3));
       }
       window.addEventListener('scroll', function () {
