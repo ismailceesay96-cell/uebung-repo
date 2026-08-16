@@ -192,7 +192,7 @@
 
     /* Bild-Popup je Bereich (Platzhalter-Bilder — später ersetzen) */
     var zoneImages = {
-      buehne:  { img: 'assets/img/venue-ballsaal.jpg', cap: 'Bühne' },
+      buehne:  { img: 'assets/img/zone-buehne.jpg', cap: 'Bühne' },
       tanz:    { img: 'assets/img/venue-panorama.jpg', cap: 'Tanzfläche' },
       tische:  { img: 'assets/img/venue-tische.jpg',   cap: 'Sitzplätze' },
       bar:     { img: 'assets/img/venue-catering.jpg', cap: 'Bar' },
