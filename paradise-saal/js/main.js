@@ -11,7 +11,12 @@
   /* ---- Nav: Hintergrund beim Scrollen + Höhe für Schnellzugriff-Leiste ---- */
   var nav = document.getElementById('nav');
   function setNavH() {
-    document.documentElement.style.setProperty('--navh', nav.offsetHeight + 'px');
+    var root = document.documentElement;
+    var q = document.getElementById('quicknav');
+    var qh = (q && getComputedStyle(q).display !== 'none') ? q.offsetHeight : 0;
+    root.style.setProperty('--navh', nav.offsetHeight + 'px');
+    root.style.setProperty('--qh', qh + 'px');
+    root.style.setProperty('--headerh', (qh + nav.offsetHeight) + 'px');
   }
   function onScroll() {
     if (window.scrollY > 40) nav.classList.add('is-scrolled');
