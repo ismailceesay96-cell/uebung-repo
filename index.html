@@ -163,17 +163,17 @@
   </div>
 
   <div class="gallery-grid" id="galleryGrid">
-    <figure class="gtile gtile--wide"><img src="assets/img/venue-panorama.jpg" alt="Lichtdurchfluteter Saal mit Glasfront und Samtsesseln" loading="lazy"></figure>
-    <figure class="gtile gtile--tall"><img src="assets/img/venue-torte.jpg" alt="Mehrstöckige Hochzeitstorte in Weiß mit Blütendekor" loading="lazy"></figure>
-    <figure class="gtile gtile--tall"><img src="assets/img/venue-tische.jpg" alt="Elegant eingedeckte Tische mit dunklen Samtsesseln" loading="lazy"></figure>
-    <figure class="gtile"><img class="pos-top" src="assets/img/venue-ballsaal.jpg" alt="Sechseckige Deckengestaltung mit warmem Licht" loading="lazy"></figure>
-    <figure class="gtile"><img src="assets/img/venue-buffet.jpg" alt="Reich gedecktes Buffet mit Chafing-Dishes" loading="lazy"></figure>
-    <figure class="gtile gtile--wide"><img src="assets/img/venue-catering.jpg" alt="Festliches Fingerfood- und Vorspeisen-Arrangement" loading="lazy"></figure>
-    <figure class="gtile"><img src="assets/img/venue-ballsaal.jpg" alt="Großer Ballsaal am Abend mit stimmungsvoller Beleuchtung" loading="lazy"></figure>
-    <figure class="gtile"><img class="pos-detail" src="assets/img/venue-torte.jpg" alt="Detail der Torte mit filigranen Zuckerblüten" loading="lazy"></figure>
-    <figure class="gtile gtile--wide"><img class="pos-bottom" src="assets/img/venue-panorama.jpg" alt="Loungebereich mit Blick ins Grüne" loading="lazy"></figure>
-    <figure class="gtile"><img class="pos-detail" src="assets/img/venue-tische.jpg" alt="Detail der Tischdekoration mit Serviette und Tischleuchte" loading="lazy"></figure>
-    <figure class="gtile"><img class="pos-detail" src="assets/img/venue-catering.jpg" alt="Frische Häppchen und Fruchtplatte im Detail" loading="lazy"></figure>
+    <figure class="gtile gtile--wide"><img src="assets/img/zone-buehne.jpg" alt="Bühne mit festlicher Beleuchtung" loading="lazy"></figure>
+    <figure class="gtile gtile--tall"><img src="assets/img/zone-lounge.jpg" alt="Elegante Lounge in Schwarz und Gold" loading="lazy"></figure>
+    <figure class="gtile gtile--wide"><img src="assets/img/gallery-panorama-lounge.jpg" alt="Panorama-Saal mit Glasfront, dunklen Samtsesseln und Tageslicht" loading="lazy"></figure>
+    <figure class="gtile"><img src="assets/img/zone-empfang.jpg" alt="Empfangsbereich mit Kronleuchter" loading="lazy"></figure>
+    <figure class="gtile"><img src="assets/img/zone-tanz.jpg" alt="Tanzfläche im Ballsaal mit blauer Beleuchtung" loading="lazy"></figure>
+    <figure class="gtile gtile--wide"><img src="assets/img/zone-hof.jpg" alt="Hof und Terrasse im Freien mit Sonnenschirmen" loading="lazy"></figure>
+    <figure class="gtile"><img src="assets/img/zone-tische.jpg" alt="Festlich eingedeckte Sitzplätze" loading="lazy"></figure>
+    <figure class="gtile"><img src="assets/img/zone-buffet-1.jpg" alt="Buffet mit feinen Vorspeisen" loading="lazy"></figure>
+    <figure class="gtile gtile--wide"><img src="assets/img/zone-buffet-3.jpg" alt="Dessertbuffet mit süßen Köstlichkeiten" loading="lazy"></figure>
+    <figure class="gtile"><img src="assets/img/zone-bar.jpg" alt="Bar mit warmem Licht und Gold-Akzenten" loading="lazy"></figure>
+    <figure class="gtile"><img src="assets/img/zone-buffet-2.jpg" alt="Warmes Buffet mit herzhaften Speisen" loading="lazy"></figure>
   </div>
 </section>
 
@@ -272,6 +272,7 @@
       <p class="eyebrow eyebrow--center eyebrow--light">Scrollen Sie durch den Saal</p>
       <h2 class="rundgang__title">Ein Rundgang, <em>Schritt für Schritt</em></h2>
       <p class="rundgang__hint">Bewegen Sie sich weiter — der Saal öffnet sich vor Ihnen.</p>
+      <p class="rundgang__step" id="hallStep" aria-live="polite"><span class="rundgang__step-no" id="hallStepNo"></span><span class="rundgang__step-name" id="hallStepName"></span></p>
     </div>
     <div class="rundgang__progress"><span id="hallProgress"></span></div>
   </div>
@@ -322,7 +323,7 @@
       <div class="saal3d" id="saal3d">
         <div class="saal3d__scene">
           <div class="saal3d__floor" id="fp">
-            <svg class="fp-svg" viewBox="0 0 900 600" role="img" aria-label="Grundriss des Saals mit Bühne, Tanzfläche, Sitzplätzen, Bar, Lounge, Empfang und Hof">
+            <svg class="fp-svg" viewBox="0 0 900 600" role="img" aria-label="Grundriss des Saals mit Bühne, Buffet, Tanzfläche, Sitzplätzen, Bar, Lounge, Empfang und Hof">
               <!-- Umriss: achteckiger Saal -->
               <polygon class="fp-wall" points="118,118 562,118 616,172 616,482 562,536 118,536 64,482 64,172"/>
               <!-- Hof-Terrasse (Freifläche rechts) -->
@@ -336,6 +337,16 @@
                 <path class="fp-glow" d="M262 118 a78 78 0 0 1 156 0 z"/>
                 <path class="fp-line" d="M282 110 a58 58 0 0 1 116 0" fill="none"/>
                 <text class="fp-label" x="340" y="86">BÜHNE</text>
+              </g>
+
+              <!-- Buffet (Theke oben rechts, neben der Bühne) -->
+              <g class="zone" data-zone="buffet" role="button" tabindex="0" aria-label="Buffet — Bild öffnen">
+                <rect class="fp-fill fp-buffet" x="452" y="150" width="120" height="30" rx="11"/>
+                <circle class="fp-stool" cx="476" cy="165" r="5"/>
+                <circle class="fp-stool" cx="500" cy="165" r="5"/>
+                <circle class="fp-stool" cx="524" cy="165" r="5"/>
+                <circle class="fp-stool" cx="548" cy="165" r="5"/>
+                <text class="fp-label" x="512" y="140">BUFFET</text>
               </g>
 
               <!-- Tanzfläche (rund) -->
@@ -425,6 +436,7 @@
     <li data-zone="lounge"><span class="fp-legend__no">05</span><span><strong>Lounge</strong>Sitzecke zum Verweilen</span></li>
     <li data-zone="hof"><span class="fp-legend__no">06</span><span><strong>Hof · Terrasse</strong>Freiluftbereich</span></li>
     <li data-zone="empfang"><span class="fp-legend__no">07</span><span><strong>Empfang</strong>Eingang &amp; Garderobe</span></li>
+    <li data-zone="buffet"><span class="fp-legend__no">08</span><span><strong>Buffet</strong>Speisen &amp; Catering</span></li>
   </ul>
 
   <!-- Bild-Popup je Bereich -->
@@ -432,8 +444,13 @@
     <div class="fp-modal__backdrop" data-close></div>
     <figure class="fp-modal__fig" role="dialog" aria-modal="true" aria-labelledby="fpModalCap">
       <button class="fp-modal__close" data-close aria-label="Schließen">&times;</button>
-      <img id="fpModalImg" alt="">
-      <figcaption id="fpModalCap"></figcaption>
+      <div class="fp-modal__stage">
+        <img id="fpModalImg" alt="">
+        <button class="fp-modal__nav fp-modal__nav--prev" id="fpPrev" type="button" aria-label="Vorheriges Bild" hidden>&#8249;</button>
+        <button class="fp-modal__nav fp-modal__nav--next" id="fpNext" type="button" aria-label="Nächstes Bild" hidden>&#8250;</button>
+      </div>
+      <figcaption id="fpModalCap"><span class="fp-modal__title" id="fpModalTitle"></span><span class="fp-modal__sub" id="fpModalSub"></span></figcaption>
+      <div class="fp-modal__dots" id="fpDots" hidden></div>
     </figure>
   </div>
 </section>
@@ -667,17 +684,19 @@
 
   <div class="footer__bar">
     <p class="footer__legal">© <span id="year"></span> Paradise Saal · Beispiel-Referenz. Name &amp; Kontaktdaten sind Platzhalter.</p>
-    <!-- Designed-by-Credit — dezent. Logo bei Bedarf in assets/img/primepage-logo.svg ablegen. -->
-    <!-- PLATZHALTER: href auf echte Prime-Page-Domain setzen; Logo in assets/img/primepage-logo.svg ablegen -->
-    <a class="pp-credit" href="https://www.prime-page.example" target="_blank" rel="noopener" aria-label="Designed by Prime Page — zur Website">
-      <span class="pp-credit__mark" aria-hidden="true">
-        <img class="pp-credit__logo" src="assets/img/primepage-logo.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
-        <span class="pp-credit__fallback">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2 4 7v10l8 5 8-5V7l-8-5Z"/><path d="M12 7v10M8 9.2v5.6M16 9.2v5.6"/></svg>
+    <!-- Designed-by-Credit — prominent. Logo bei Bedarf in assets/img/primepage-logo.svg ablegen. -->
+    <div class="pp-credit-wrap">
+      <span class="pp-credit-eyebrow">Konzept · Design · Umsetzung</span>
+      <a class="pp-credit" href="https://www.prime1page.de" target="_blank" rel="noopener" aria-label="Designed by Prime Page — zur Website">
+        <span class="pp-credit__mark" aria-hidden="true">
+          <img class="pp-credit__logo" src="assets/img/primepage-logo.svg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex';">
+          <span class="pp-credit__fallback">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2 4 7v10l8 5 8-5V7l-8-5Z"/><path d="M12 7v10M8 9.2v5.6M16 9.2v5.6"/></svg>
+          </span>
         </span>
-      </span>
-      <span class="pp-credit__txt">designed by <strong>Prime&nbsp;Page</strong></span>
-    </a>
+        <span class="pp-credit__txt">designed by <strong>Prime&nbsp;Page</strong></span>
+      </a>
+    </div>
   </div>
 </footer>
 
