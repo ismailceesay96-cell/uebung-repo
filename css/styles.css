@@ -195,18 +195,32 @@ a{ color:inherit; text-decoration:none; }
     box-shadow:-16px 0 14px -8px var(--noir);
   }
 
-  /* Logo NICHT mehr fixiert: sitzt unter der Chip-Leiste und scrollt weg */
+  /* Logo bleibt sichtbar: fix unter der Chip-Leiste, wird beim Scrollen kleiner */
   .nav{
-    position:absolute; top:calc(2.9rem + env(safe-area-inset-top)); z-index:90;
-    padding-top:.4rem; padding-bottom:.4rem;
-    background:transparent !important; border-bottom-color:transparent !important;
-    backdrop-filter:none !important;
+    position:fixed; top:var(--qh,52px); left:0; right:0; z-index:100;
+    padding-top:.7rem; padding-bottom:.9rem;
+    background:linear-gradient(180deg, rgba(10,9,8,.96) 45%, rgba(10,9,8,0));
+    border-bottom-color:transparent !important; backdrop-filter:none !important;
+    transition:padding .3s ease, background .35s ease;
   }
+  .nav__brand-script{ font-size:2.05rem; transition:font-size .3s ease; }
+  .nav__brand-sans{ font-size:.8rem; transition:font-size .3s ease; }
+  /* beim Scrollen: kleiner + klarer Header-Balken, aber weiterhin sichtbar */
+  .nav.is-scrolled{
+    padding-top:.45rem; padding-bottom:.45rem;
+    background:rgba(10,9,8,.97) !important;
+    border-bottom:1px solid var(--line) !important;
+  }
+  .nav.is-scrolled .nav__brand-script{ font-size:1.45rem; }
+  .nav.is-scrolled .nav__brand-sans{ font-size:.64rem; }
+
+  /* Hero-Inhalt unter den fixen Header schieben */
+  .hero{ padding-top:7rem; }
 }
 /* Anker-Ziele nicht unter den fixen Leisten verstecken */
 #top,#anlaesse,#galerie,#rundgang,#raumplan,#stimmen,#location,#kontakt{ scroll-margin-top:78px; }
 @media (max-width:760px){
-  #anlaesse,#galerie,#rundgang,#raumplan,#stimmen,#location,#kontakt{ scroll-margin-top:64px; }
+  #anlaesse,#galerie,#rundgang,#raumplan,#stimmen,#location,#kontakt{ scroll-margin-top:calc(var(--qh,52px) + 52px); }
 }
 
 /* ============================================================
