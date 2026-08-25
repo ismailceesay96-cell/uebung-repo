@@ -168,34 +168,45 @@ a{ color:inherit; text-decoration:none; }
 /* Schnellzugriff-Leiste — immer sichtbar (mobil), direkt zu den Bereichen */
 .quicknav{ display:none; }
 @media (max-width:760px){
+  /* Chip-Leiste GANZ OBEN, deckend, dauerhaft sichtbar */
   .quicknav{
-    position:fixed; left:0; right:0; top:var(--navh,54px); z-index:99;
-    display:flex; gap:.5rem; align-items:center;
-    padding:.55rem var(--pad);
+    position:fixed; left:0; right:0; top:0; z-index:101;
+    display:flex; gap:.45rem; align-items:center;
+    padding:.6rem var(--pad);
+    padding-top:max(.6rem, env(safe-area-inset-top));
     overflow-x:auto; -webkit-overflow-scrolling:touch;
-    background:rgba(10,9,8,.92); backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line-soft);
+    background:var(--noir);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 6px 18px -10px rgba(0,0,0,.9);
     scrollbar-width:none;
   }
   .quicknav::-webkit-scrollbar{ display:none; }
   .quicknav a{
     flex:0 0 auto; white-space:nowrap;
-    font-size:.7rem; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--ink-dim); padding:.45rem .8rem;
+    font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink); padding:.5rem .85rem;
     border:1px solid var(--line-soft); border-radius:999px;
     transition:color .25s ease, border-color .25s ease, background .25s ease;
   }
-  .quicknav a.is-current{ color:var(--champagne); border-color:var(--line); }
+  .quicknav a.is-current{ color:var(--noir); background:rgba(201,162,75,.85); border-color:transparent; }
   .quicknav__cta{
-    color:var(--noir); background:var(--gold); border-color:transparent; font-weight:600;
-    position:sticky; right:0; margin-left:.25rem;      /* immer sichtbar am rechten Rand */
-    box-shadow:-14px 0 12px -8px rgba(10,9,8,.95);
+    color:var(--noir); background:var(--gold); border-color:transparent; font-weight:700;
+    position:sticky; right:0; margin-left:.3rem;       /* immer sichtbar am rechten Rand */
+    box-shadow:-16px 0 14px -8px var(--noir);
+  }
+
+  /* Logo NICHT mehr fixiert: sitzt unter der Chip-Leiste und scrollt weg */
+  .nav{
+    position:absolute; top:calc(2.9rem + env(safe-area-inset-top)); z-index:90;
+    padding-top:.4rem; padding-bottom:.4rem;
+    background:transparent !important; border-bottom-color:transparent !important;
+    backdrop-filter:none !important;
   }
 }
 /* Anker-Ziele nicht unter den fixen Leisten verstecken */
 #top,#anlaesse,#galerie,#rundgang,#raumplan,#stimmen,#location,#kontakt{ scroll-margin-top:78px; }
 @media (max-width:760px){
-  #anlaesse,#galerie,#rundgang,#raumplan,#stimmen,#location,#kontakt{ scroll-margin-top:118px; }
+  #anlaesse,#galerie,#rundgang,#raumplan,#stimmen,#location,#kontakt{ scroll-margin-top:64px; }
 }
 
 /* ============================================================
@@ -416,17 +427,6 @@ a{ color:inherit; text-decoration:none; }
 }
 .rundgang__title em{ font-style:italic; color:var(--gold-bright); }
 .rundgang__hint{ color:var(--ink-dim); font-size:.95rem; margin:0; }
-.rundgang__step{
-  display:inline-flex; align-items:center; gap:.7rem; margin:1.4rem 0 0;
-  padding:.5rem 1.2rem; border:1px solid rgba(232,199,122,.4); border-radius:999px;
-  background:rgba(6,5,4,.35); backdrop-filter:blur(3px);
-}
-.rundgang__step-no{
-  font-size:.72rem; letter-spacing:.14em; color:var(--gold-bright); font-variant-numeric:tabular-nums;
-}
-.rundgang__step-name{
-  font-family:var(--serif); font-size:1.15rem; color:var(--champagne); letter-spacing:.02em;
-}
 .rundgang__progress{
   position:absolute; left:var(--pad); right:var(--pad); bottom:34px; z-index:2;
   height:1px; background:var(--line-soft);
@@ -469,7 +469,7 @@ a{ color:inherit; text-decoration:none; }
 .floorplan{ padding:clamp(6rem,12vw,11rem) var(--pad); background:linear-gradient(180deg,var(--noir-2),var(--noir)); }
 
 /* ---- 3D-Szene: erst alles von oben, dann Drehung beim Wegscrollen ---- */
-.fp3d{ position:relative; height:200vh; }              /* Scroll-Strecke */
+.fp3d{ position:relative; height:230vh; }              /* Scroll-Strecke */
 .fp3d__sticky{
   position:sticky; top:0; min-height:100vh;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -483,7 +483,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .saal3d__scene{
   transform-style:preserve-3d;
-  transform:rotateX(calc(var(--p) * 60deg));   /* flacher/steiler Blick von oben hinein */
+  transform:rotateX(calc(var(--p) * 48deg));   /* flacher/steiler Blick von oben hinein */
   transition:transform .12s linear;
 }
 .saal3d__floor{
@@ -537,7 +537,6 @@ a{ color:inherit; text-decoration:none; }
 .seat{ fill:none; stroke:var(--gold); stroke-opacity:.35; stroke-width:1; stroke-dasharray:3 4; }
 .tbl{ fill:rgba(201,162,75,.14); stroke:var(--gold); stroke-opacity:.5; stroke-width:1; }
 .fp-bar{ fill:rgba(201,162,75,.1); }
-.fp-buffet{ fill:rgba(232,199,122,.13); }
 .fp-stool{ fill:var(--gold); opacity:.5; }
 .fp-sofa{ fill:rgba(201,162,75,.1); }
 .fp-open{ fill:#080706; stroke:var(--gold-bright); stroke-width:2; }
@@ -599,17 +598,9 @@ a{ color:inherit; text-decoration:none; }
 }
 .fp-modal__fig img{ width:100%; max-height:70vh; object-fit:cover; display:block; }
 .fp-modal__fig figcaption{
-  padding:1rem 1.4rem; border-top:1px solid var(--line-soft);
+  padding:1rem 1.4rem; font-family:var(--serif); font-size:1.3rem; color:var(--champagne);
+  border-top:1px solid var(--line-soft);
 }
-.fp-modal__title{
-  display:block; font-family:var(--serif); font-size:1.3rem; color:var(--champagne); line-height:1.2;
-}
-.fp-modal__sub{
-  display:block; margin-top:.3rem; font-family:var(--sans, inherit);
-  font-size:.92rem; font-style:italic; letter-spacing:.01em;
-  color:var(--muted, rgba(232,225,210,.68));
-}
-.fp-modal__sub:empty{ display:none; }
 .fp-modal__close{
   position:absolute; top:.6rem; right:.6rem; z-index:2;
   width:40px; height:40px; border-radius:50%; cursor:pointer;
@@ -618,24 +609,6 @@ a{ color:inherit; text-decoration:none; }
   transition:background .25s ease, border-color .25s ease;
 }
 .fp-modal__close:hover{ background:var(--gold); color:var(--noir); border-color:transparent; }
-.fp-modal__stage{ position:relative; }
-.fp-modal__nav{
-  position:absolute; top:50%; transform:translateY(-50%); z-index:2;
-  width:46px; height:46px; border-radius:50%; cursor:pointer;
-  background:rgba(10,9,8,.55); border:1px solid var(--line); color:var(--champagne);
-  font-size:1.7rem; line-height:1; display:grid; place-items:center;
-  transition:background .25s ease, color .25s ease, border-color .25s ease;
-  -webkit-backdrop-filter:blur(2px); backdrop-filter:blur(2px);
-}
-.fp-modal__nav:hover{ background:var(--gold); color:var(--noir); border-color:transparent; }
-.fp-modal__nav--prev{ left:12px; }
-.fp-modal__nav--next{ right:12px; }
-.fp-modal__nav[hidden]{ display:none; }
-.fp-modal__dots{ display:flex; gap:8px; justify-content:center; padding:12px 0 16px; background:var(--noir-2); }
-.fp-modal__dots[hidden]{ display:none; }
-.fp-dot{ width:9px; height:9px; padding:0; border:0; border-radius:50%; cursor:pointer; background:rgba(201,162,75,.35); transition:background .25s ease, transform .25s ease; }
-.fp-dot:hover{ background:rgba(201,162,75,.6); }
-.fp-dot.is-on{ background:var(--gold-bright); transform:scale(1.25); }
 @keyframes fadeIn{ from{ opacity:0; } }
 @keyframes modalIn{ from{ opacity:0; transform:translateY(20px) scale(.98); } }
 
@@ -758,31 +731,19 @@ a{ color:inherit; text-decoration:none; }
 }
 .footer__legal{ color:#6b6353; font-size:.78rem; margin:0; }
 
-/* Prime-Page-Credit — prominent */
-.pp-credit-wrap{ display:flex; flex-direction:column; align-items:flex-end; gap:.45rem; }
-.pp-credit-eyebrow{
-  font-size:.68rem; letter-spacing:.24em; text-transform:uppercase; color:#8a7f68;
-}
+/* dezenter Prime-Page-Credit */
 .pp-credit{
-  display:inline-flex; align-items:center; gap:.7rem;
-  padding:.7rem 1.4rem; border:1px solid var(--gold-deep); border-radius:999px;
-  background:rgba(201,162,75,.06);
-  color:var(--gold); font-size:1.05rem; letter-spacing:.1em;
-  opacity:1; transition:background .3s ease, color .3s ease, border-color .3s ease, transform .3s ease;
+  display:inline-flex; align-items:center; gap:.45rem;
+  color:#6b6353; font-size:.72rem; letter-spacing:.08em;
+  opacity:.7; transition:opacity .3s ease, color .3s ease;
 }
-.pp-credit:hover{ color:var(--gold); background:rgba(201,162,75,.14); border-color:var(--gold); transform:translateY(-1px); }
-.pp-credit__mark{ display:inline-flex; align-items:center; color:var(--gold); transition:color .3s ease; }
+.pp-credit:hover{ opacity:1; color:var(--gold); }
+.pp-credit__mark{ display:inline-flex; align-items:center; color:var(--gold-deep); transition:color .3s ease; }
 .pp-credit:hover .pp-credit__mark{ color:var(--gold); }
-.pp-credit__logo{ height:26px; width:auto; display:block; }
-.pp-credit__fallback{ width:24px; height:24px; display:none; }
+.pp-credit__logo{ height:16px; width:auto; display:block; }
+.pp-credit__fallback{ width:15px; height:15px; display:none; }
 .pp-credit__fallback svg{ width:100%; height:100%; }
-.pp-credit__txt{ text-transform:uppercase; }
-.pp-credit__txt strong{ font-weight:600; letter-spacing:.14em; color:var(--champagne); }
-@media (max-width:640px){
-  .pp-credit-wrap{ align-items:center; }
-  .pp-credit{ font-size:.95rem; padding:.6rem 1.1rem; }
-  .pp-credit__logo{ height:22px; }
-}
+.pp-credit__txt strong{ font-weight:500; letter-spacing:.1em; }
 
 /* ============================================================
    DIREKTKONTAKT (unter dem Formular)
@@ -919,51 +880,4 @@ a{ color:inherit; text-decoration:none; }
   .saal3d__hint{ display:none; }
   .fp3d{ height:auto; }
   .fp3d__sticky{ position:static; min-height:0; }
-}
-
-/* ============================================================
-   MOBILE-FEINSCHLIFF — Touch-Komfort & kleine Screens
-   ============================================================ */
-/* Tap-Verzögerung entfernen, Touch-Ziele komfortabler */
-a, button, .zone, .fp-legend li, .fp-dot, .quicknav a, .btn, summary{
-  touch-action:manipulation;
-}
-/* iOS: horizontales Wischen im Rundgang/Chip-Bereich sauber */
-.quicknav{ overscroll-behavior-x:contain; }
-
-@media (max-width:600px){
-  /* Bild-Popup: mehr Platz fürs Bild, Beschriftung immer sichtbar */
-  .fp-modal{ padding:12px; }
-  .fp-modal__fig img{ max-height:56vh; }
-  .fp-modal__fig figcaption{ padding:.8rem 1rem; }
-  .fp-modal__title{ font-size:1.15rem; }
-  .fp-modal__sub{ font-size:.85rem; margin-top:.25rem; }
-  .fp-modal__close{ width:44px; height:44px; }         /* volles Touch-Ziel */
-  .fp-modal__nav{ width:44px; height:44px; font-size:1.5rem; }
-  .fp-modal__nav--prev{ left:8px; }
-  .fp-modal__nav--next{ right:8px; }
-  /* Punkte: größere unsichtbare Tap-Fläche */
-  .fp-modal__dots{ gap:14px; padding:14px 0 18px; }
-  .fp-dot{ width:10px; height:10px; position:relative; }
-  .fp-dot::before{ content:''; position:absolute; inset:-11px; border-radius:50%; }
-
-  /* Rundgang: Schritt-Beschriftung kompakter */
-  .rundgang__step{ margin-top:1rem; padding:.45rem 1rem; gap:.55rem; }
-  .rundgang__step-no{ font-size:.66rem; }
-  .rundgang__step-name{ font-size:1rem; }
-  .rundgang__hint{ font-size:.86rem; }
-
-  /* Chip-Navigation: etwas größere Tap-Ziele */
-  .quicknav a{ padding:.5rem .9rem; font-size:.72rem; }
-
-  /* Galerie-Kacheln etwas höher für mehr Bildwirkung */
-  .gallery-grid{ grid-auto-rows:160px; }
-}
-
-@media (max-width:400px){
-  /* sehr schmale Geräte: eine Spalte, volle Bildhöhe */
-  .gallery-grid{ grid-template-columns:1fr; grid-auto-rows:220px; }
-  .gtile--wide{ grid-column:span 1; }
-  .gtile--tall{ grid-row:span 1; }
-  .contact-channels{ grid-template-columns:1fr; }
 }

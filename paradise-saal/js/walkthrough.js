@@ -19,22 +19,7 @@
   var ctx = canvas.getContext('2d');
   var section = document.querySelector('.rundgang');
   var progressBar = document.getElementById('hallProgress');
-  var stepNoEl = document.getElementById('hallStepNo');
-  var stepNameEl = document.getElementById('hallStepName');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* Beschriftung je Rundgang-Station — Reihenfolge wie manifest.json */
-  var STEP_LABELS = ['Hof · Terrasse', 'Einlass', 'Tanzfläche', 'Sitze', 'Bar'];
-  var lastStep = -1;
-  function updateStepLabel(p) {
-    if (!stepNameEl || !STEP_LABELS.length) return;
-    var n = STEP_LABELS.length;
-    var idx = Math.min(n - 1, Math.max(0, Math.floor(p * n)));
-    if (idx === lastStep) return;
-    lastStep = idx;
-    if (stepNoEl) stepNoEl.textContent = (idx + 1) + ' / ' + n;
-    stepNameEl.textContent = STEP_LABELS[idx];
-  }
 
   var frames = [];
   var frameCount = 0;
@@ -179,7 +164,6 @@
     else if (mode === 'cinema') drawCinema(p);
     else if (mode === 'procedural') drawProcedural(p);
     if (progressBar) progressBar.style.width = (p * 100).toFixed(1) + '%';
-    updateStepLabel(p);
   }
 
   /* ---- Scroll → Progress ---- */
